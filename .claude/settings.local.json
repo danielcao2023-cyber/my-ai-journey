@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(superpowers:brainstorming)",
+      "Bash(/Users/caogong/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/brainstorming/scripts/start-server.sh *)",
+      "Skill(superpowers:writing-plans)",
+      "Skill(superpowers:subagent-driven-development)",
+      "Bash(npm create *)",
+      "Bash(yes \"\")",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(xattr -r -d com.apple.quarantine \"/Users/caogong/我的云端硬盘/ai/个人网页部署/node_modules/@rollup/rollup-darwin-arm64\")",
+      "Bash(xattr -r -d com.apple.quarantine \"/Users/caogong/我的云端硬盘/ai/个人网页部署/node_modules/rollup\")",
+      "Bash(codesign *)",
+      "Bash(xattr -c \"/Users/caogong/我的云端硬盘/ai/个人网页部署/node_modules/astro/node_modules/vite/node_modules/rollup/node_modules/@rollup/rollup-darwin-arm64/rollup.darwin-arm64.node\")",
+      "Bash(strip -S \"/Users/caogong/我的云端硬盘/ai/个人网页部署/node_modules/astro/node_modules/vite/node_modules/rollup/node_modules/@rollup/rollup-darwin-arm64/rollup.darwin-arm64.node\")",
+      "Bash(rm -rf node_modules package-lock.json pnpm-lock.yaml)",
+      "Bash(pnpm install *)",
+      "Bash(pnpm approve-builds *)",
+      "Bash(curl -sL https://nodejs.org/dist/v24.14.0/node-v24.14.0-darwin-arm64.tar.gz -o /tmp/node-official.tar.gz)",
+      "Bash(tar -xzf /tmp/node-official.tar.gz -C /tmp/)",
+      "Bash(/tmp/node-v24.14.0-darwin-arm64/bin/node -v)",
+      "Bash(/tmp/node-v24.14.0-darwin-arm64/bin/npx astro *)"
+    ]
+  }
+}

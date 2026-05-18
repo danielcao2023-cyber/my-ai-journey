@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    // Enable strict mode
+    "strict": true,
+    // Base URL for module resolution
+    "baseUrl": ".",
+    // Paths for aliases
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*"]
+}
