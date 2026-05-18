@@ -1,0 +1,2246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI赋能工作 — 运城职业技术大学</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Sans:wght@200;300;400;500&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===========================================
+   CSS CUSTOM PROPERTIES — Dark Botanical Tech
+   =========================================== */
+:root {
+  --bg-deep: #08090b;
+  --text-primary: #e8e4df;
+  --text-secondary: #9a9590;
+  --text-muted: rgba(232,228,223,0.35);
+  --accent-gold: #d4a574;
+  --accent-rose: #e8b4b8;
+  --accent-blue: #6b8cce;
+  --accent-sage: #8aab9e;
+  --font-display: 'Cormorant', 'Noto Serif SC', serif;
+  --font-body: 'IBM Plex Sans', 'Noto Sans SC', sans-serif;
+  --title-size: clamp(2.8rem, 8vw, 6rem);
+  --h2-size: clamp(1.8rem, 4.5vw, 3rem);
+  --h3-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  --body-size: clamp(1rem, 1.8vw, 1.25rem);
+  --small-size: clamp(0.85rem, 1.2vw, 1rem);
+  --slide-padding: clamp(1.2rem, 3vw, 3rem);
+  --content-gap: clamp(0.6rem, 1.5vw, 1.5rem);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ===========================================
+   VIEWPORT FITTING
+   =========================================== */
+html, body { height: 100%; overflow-x: hidden; overflow-y: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+.slide { width: 100vw; height: 100vh; height: 100dvh; overflow: hidden; scroll-snap-align: start; display: flex; flex-direction: column; position: relative; }
+.slide-content { flex: 1; display: flex; flex-direction: column; justify-content: center; max-height: 100%; overflow: hidden; padding: var(--slide-padding); }
+
+@media (max-height: 700px) {
+  :root { --slide-padding: clamp(0.8rem, 2.5vw, 2rem); --title-size: clamp(2rem, 6vw, 3.5rem); --h2-size: clamp(1.4rem, 3.5vw, 2.2rem); --h3-size: clamp(1.1rem, 2.2vw, 1.5rem); }
+}
+@media (max-height: 600px) {
+  :root { --slide-padding: clamp(0.6rem, 2vw, 1.5rem); --title-size: clamp(1.6rem, 5vw, 2.8rem); --body-size: clamp(0.85rem, 1.4vw, 1rem); --small-size: clamp(0.75rem, 1vw, 0.9rem); }
+  .nav-dots, .slide-counter, .ambient-orbs { display: none; }
+}
+@media (max-height: 500px) {
+  :root { --slide-padding: clamp(0.4rem, 1.5vw, 1rem); --title-size: clamp(1.3rem, 4.5vw, 2rem); --h2-size: clamp(1rem, 3vw, 1.5rem); --body-size: clamp(0.75rem, 1.2vw, 0.9rem); --small-size: clamp(0.7rem, 0.9vw, 0.8rem); }
+}
+@media (max-width: 600px) {
+  :root { --title-size: clamp(1.6rem, 8vw, 2.8rem); }
+  .module-row, .stat-grid, .trend-grid, .concept-flow, .pain-grid, .scene-row, .principle-grid { flex-direction: column !important; }
+  .split-layout { flex-direction: column !important; }
+  .split-left, .split-right { width: 100% !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ===========================================
+   GLOBAL BASE
+   =========================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg-deep); font-family: var(--font-body); color: var(--text-primary); }
+
+/* ===========================================
+   AMBIENT ORBS — EVERY SLIDE
+   =========================================== */
+.ambient-orbs { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.ambient-orbs .orb { position: absolute; border-radius: 50%; filter: blur(140px); }
+.orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, var(--accent-gold), transparent); top: -120px; right: -80px; opacity: 0.3; animation: orbDrift1 14s ease-in-out infinite; }
+.orb-2 { width: 380px; height: 380px; background: radial-gradient(circle, var(--accent-rose), transparent); bottom: -100px; left: -60px; opacity: 0.25; animation: orbDrift2 13s ease-in-out infinite; }
+.orb-3 { width: 280px; height: 280px; background: radial-gradient(circle, var(--accent-blue), transparent); bottom: 20%; right: 15%; opacity: 0.2; animation: orbDrift3 16s ease-in-out infinite; }
+.orb-subtle { opacity: 0.14 !important; }
+@keyframes orbDrift1 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(-35px,25px) scale(1.06)} 66%{transform:translate(15px,-15px) scale(0.96)} }
+@keyframes orbDrift2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(28px,-20px) scale(1.05)} }
+@keyframes orbDrift3 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-20px,-30px) scale(1.07)} }
+
+/* ===========================================
+   GRAIN TEXTURE
+   =========================================== */
+.grain { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+/* Grid is now drawn by Canvas radar — see JS */
+
+/* Radar scan canvas overlay */
+.radar-canvas {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+}
+
+/* ===========================================
+   VERTICAL ACCENT LINES — breathing
+   =========================================== */
+.vline { position: absolute; width: 1px; pointer-events: none; z-index: 0;
+  background: linear-gradient(to bottom, transparent, rgba(212,165,116,0.35), transparent);
+  animation: vlineBreathe 4s ease-in-out infinite; }
+.vline:nth-child(odd) { animation-delay: 0s; }
+.vline:nth-child(even) { animation-delay: 1.2s; }
+.vline-tl { left: clamp(40px,8vw,100px); top: clamp(40px,8vh,100px); height: clamp(70px,16vh,160px); }
+.vline-tr { right: clamp(40px,8vw,100px); top: clamp(40px,8vh,100px); height: clamp(70px,16vh,160px); }
+.vline-bl { left: clamp(40px,8vw,100px); bottom: clamp(40px,8vh,100px); height: clamp(70px,16vh,160px); }
+.vline-br { right: clamp(40px,8vw,100px); bottom: clamp(40px,8vh,100px); height: clamp(70px,16vh,160px); }
+@keyframes vlineBreathe { 0%,100%{opacity:0.35} 50%{opacity:0.85} }
+
+/* ===========================================
+   FLOATING SHAPES
+   =========================================== */
+.float-shape { position: absolute; pointer-events: none; z-index: 0; }
+.shape-ring { width: clamp(100px,18vw,200px); height: clamp(100px,18vw,200px); border: 1px solid rgba(212,165,116,0.07); border-radius: 50%; animation: orbit 24s linear infinite; }
+.shape-ring-2 { width: clamp(60px,10vw,130px); height: clamp(60px,10vw,130px); border: 1px solid rgba(232,180,184,0.05); border-radius: 50%; animation: orbit 18s linear infinite reverse; }
+.shape-dot { width: 5px; height: 5px; background: rgba(212,165,116,0.3); border-radius: 50%; animation: dotFloat 6s ease-in-out infinite; }
+.shape-dot-2 { width: 3px; height: 3px; background: rgba(107,140,206,0.25); border-radius: 50%; animation: dotFloat 5s ease-in-out infinite 1.5s; }
+.shape-dot-3 { width: 4px; height: 4px; background: rgba(232,180,184,0.25); border-radius: 50%; animation: dotFloat 7s ease-in-out infinite 0.7s; }
+@keyframes orbit { 0%{transform:rotate(0deg) translateX(clamp(30px,6vw,80px)) rotate(0deg)} 100%{transform:rotate(360deg) translateX(clamp(30px,6vw,80px)) rotate(-360deg)} }
+@keyframes dotFloat { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-12px) scale(1.3)} }
+
+/* ===========================================
+   JS-DRIVEN ENTRANCE ANIMATIONS
+   =========================================== */
+.reveal-item { opacity: 0; will-change: transform, opacity; }
+@keyframes fadeUp { 0%{opacity:0;transform:translateY(36px)} 100%{opacity:1;transform:translateY(0)} }
+@keyframes fadeUpSmall { 0%{opacity:0;transform:translateY(18px)} 100%{opacity:1;transform:translateY(0)} }
+@keyframes blurIn { 0%{opacity:0;filter:blur(14px);transform:scale(0.96)} 100%{opacity:1;filter:blur(0);transform:scale(1)} }
+@keyframes slideInLeft { 0%{opacity:0;transform:translateX(-50px)} 100%{opacity:1;transform:translateX(0)} }
+@keyframes slideInRight { 0%{opacity:0;transform:translateX(50px)} 100%{opacity:1;transform:translateX(0)} }
+@keyframes fadeOnly { 0%{opacity:0} 100%{opacity:1} }
+@keyframes scaleIn { 0%{opacity:0;transform:scale(0.88)} 100%{opacity:1;transform:scale(1)} }
+@keyframes popIn { 0%{opacity:0;transform:scale(0.7)} 60%{transform:scale(1.04)} 100%{opacity:1;transform:scale(1)} }
+
+/* ===========================================
+   PERSISTENT MICRO-ANIMATIONS (after .entered)
+   =========================================== */
+.entered .float-gentle { animation: floatGentle 6s ease-in-out infinite; }
+.entered .float-gentle-delay { animation: floatGentle 6s ease-in-out infinite 0.5s; }
+@keyframes floatGentle { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+
+.entered .gold-glow { animation: goldGlow 4s ease-in-out infinite; }
+@keyframes goldGlow { 0%,100%{text-shadow:0 0 0 rgba(212,165,116,0)} 50%{text-shadow:0 0 18px rgba(212,165,116,0.2)} }
+
+.entered .stat-breathe { animation: statBreathe 3.5s ease-in-out infinite; }
+@keyframes statBreathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.03)} }
+
+.entered .dot-pulse::before { animation: dotPulse 3s ease-in-out infinite !important; }
+@keyframes dotPulse { 0%,100%{box-shadow:0 0 12px rgba(212,165,116,0.4)} 50%{box-shadow:0 0 24px rgba(212,165,116,0.7)} }
+
+.entered .accent-breath { animation: accentBreath 3s ease-in-out infinite; }
+@keyframes accentBreath { 0%,100%{opacity:0.5} 50%{opacity:1} }
+
+.entered .shimmer-div::after {
+  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(212,165,116,0.35),transparent);
+  animation:shimmer 3s ease-in-out infinite;
+}
+.shimmer-div { position:relative;overflow:hidden; }
+@keyframes shimmer { 0%{left:-100%} 100%{left:200%} }
+
+.entered .line-shimmer::after {
+  content:'';position:absolute;top:0;left:0;width:30%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(212,165,116,0.15),transparent);
+  animation:lineShimmer 4s ease-in-out infinite;
+}
+.line-shimmer { position:relative; }
+@keyframes lineShimmer { 0%{left:-30%} 100%{left:100%} }
+
+.entered .title-glow { animation:titleGlow 5s ease-in-out infinite; }
+@keyframes titleGlow { 0%,100%{text-shadow:0 0 0 rgba(212,165,116,0)} 50%{text-shadow:0 0 28px rgba(212,165,116,0.16)} }
+
+/* Light sweep on heading text — uses background-clip text */
+.entered h2,
+.entered .sec-name,
+.entered .thanks-main h1,
+.entered .closing-quote {
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(105deg,
+    var(--text-primary) 0%,
+    var(--text-primary) 38%,
+    rgba(0,255,128,0.6) 50%,
+    var(--text-primary) 62%,
+    var(--text-primary) 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: textSweep 4s linear infinite;
+}
+@keyframes textSweep {
+  0% { background-position: 200% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* Accent em stays solid gold */
+.entered h2 em,
+.entered .sec-name em,
+.entered .thanks-main h1 em {
+  -webkit-text-fill-color: var(--accent-gold);
+  background: none;
+}
+
+.entered .quote-float { animation:quoteFloat 7s ease-in-out infinite; }
+@keyframes quoteFloat { 0%,100%{transform:translateY(0);opacity:0.7} 50%{transform:translateY(-3px);opacity:0.85} }
+
+.entered .label-pulse { animation:labelPulse 5s ease-in-out infinite; }
+@keyframes labelPulse { 0%,100%{letter-spacing:0.3em} 50%{letter-spacing:0.37em} }
+
+.entered .card-glow { animation:cardGlow 4s ease-in-out infinite; }
+@keyframes cardGlow { 0%,100%{border-color:rgba(255,255,255,0.05)} 50%{border-color:rgba(212,165,116,0.15)} }
+
+/* ===========================================
+   UI ELEMENTS
+   =========================================== */
+.slide-counter { position:fixed;bottom:clamp(20px,3vh,36px);right:clamp(20px,4vw,48px);font-family:var(--font-body);font-size:var(--small-size);color:var(--text-muted);letter-spacing:0.15em;z-index:100;pointer-events:none; }
+.slide-counter .current { color:var(--accent-gold);font-weight:500; }
+.nav-dots { position:fixed;right:clamp(16px,3vw,28px);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:100; }
+.nav-dots .dot { width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.2);transition:all 0.4s var(--ease-out-expo);cursor:pointer; }
+.nav-dots .dot:hover { background:rgba(255,255,255,0.5); }
+.nav-dots .dot.active { background:var(--accent-gold);box-shadow:0 0 12px rgba(212,165,116,0.5);height:24px;border-radius:3px; }
+.progress-bar { position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--accent-gold),var(--accent-rose));z-index:200;transition:width 0.4s ease; }
+.kb-hint { position:fixed;bottom:clamp(20px,3vh,32px);left:50%;transform:translateX(-50%);font-family:var(--font-body);font-size:var(--small-size);color:var(--text-muted);letter-spacing:0.1em;z-index:100;pointer-events:none;transition:opacity 1s; }
+
+/* ===========================================
+   COMMON ELEMENTS
+   =========================================== */
+.accent-divider { width:clamp(40px,8vw,72px);height:1px;background:var(--accent-gold);margin:clamp(0.6rem,1.5vw,1.5rem) 0; }
+.section-label { font-family:var(--font-body);font-weight:200;font-size:var(--small-size);color:rgba(212,165,116,0.4);letter-spacing:0.3em;text-transform:uppercase; }
+
+/* ===========================================
+   SLIDE 1 — TITLE
+   =========================================== */
+.title-slide { justify-content:center;align-items:center;text-align:center; }
+.title-slide .shape-ring { top:22%;right:8%; }
+.title-slide .shape-ring-2 { bottom:16%;left:10%; }
+.title-slide .shape-dot { top:32%;left:24%; }
+.title-slide .shape-dot-2 { bottom:28%;right:20%; }
+
+/* Remove per-slide shape overrides — use global positions */
+.slide .shape-ring { top: clamp(10%, 15vh, 25%); right: clamp(3%, 6vw, 10%); }
+.slide .shape-ring-2 { bottom: clamp(10%, 12vh, 20%); left: clamp(3%, 6vw, 10%); }
+.slide .shape-dot { top: clamp(15%, 22vh, 30%); left: clamp(15%, 20vw, 26%); }
+.slide .shape-dot-2 { bottom: clamp(15%, 22vh, 30%); right: clamp(12%, 16vw, 22%); }
+.slide .shape-dot-3 { top: clamp(35%, 40vh, 55%); right: clamp(8%, 12vw, 18%); }
+.title-main { position:relative;z-index:1; }
+.title-main h1 {
+  font-family:var(--font-display);font-weight:600;
+  font-size:clamp(3rem,9vw,7rem);color:var(--text-primary);line-height:1.1;
+}
+.title-main .ai-big {
+  display:block;
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(5rem,14vw,11rem);
+  font-style:italic;
+  line-height:1;
+  /* Streaming rainbow-gold gradient */
+  background: linear-gradient(110deg,
+    var(--accent-gold) 0%,
+    #f0c080 20%,
+    #ffe8cc 35%,
+    var(--accent-gold) 50%,
+    #d4a574 65%,
+    #f0c080 80%,
+    var(--accent-gold) 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: aiStream 4s ease-in-out infinite, aiFlicker 3s ease-in-out infinite;
+}
+@keyframes aiStream {
+  0% { background-position: 200% 0; }
+  100% { background-position: -100% 0; }
+}
+@keyframes aiFlicker {
+  0%,100% { filter: drop-shadow(0 0 8px rgba(212,165,116,0.3)) drop-shadow(0 0 20px rgba(212,165,116,0.1)); }
+  50% { filter: drop-shadow(0 0 16px rgba(212,165,116,0.5)) drop-shadow(0 0 35px rgba(212,165,116,0.18)); }
+}
+.title-main .subtitle { font-family:var(--font-body);font-weight:200;font-size:clamp(0.9rem,1.8vw,1.35rem);color:rgba(232,228,223,0.45);margin-top:clamp(0.8rem,2vw,1.5rem);letter-spacing:0.15em; }
+.title-main .divider-main { width:clamp(50px,10vw,100px);height:1px;background:var(--accent-gold);margin:clamp(1.5rem,3vw,2.5rem) auto; }
+.title-meta { font-family:var(--font-body);font-weight:200;font-size:var(--small-size);color:var(--text-muted);letter-spacing:0.18em; }
+
+/* ===========================================
+   SLIDE 2 — HOOK
+   =========================================== */
+.hook-pain-grid { display:flex;flex-wrap:wrap;gap:clamp(0.6rem,1.2vw,1rem);margin-top:clamp(1rem,2vw,1.8rem);position:relative;z-index:1; }
+.hook-pain-item { flex:1;min-width:min(100%,240px);display:flex;align-items:flex-start;gap:0.6em;border:1px solid rgba(255,255,255,0.05);background:rgba(255,255,255,0.01);padding:clamp(0.7rem,1.2vw,1rem);transition:border-color 0.4s,background 0.4s; }
+.hook-pain-item:hover { border-color:rgba(212,165,116,0.2);background:rgba(255,255,255,0.025); }
+.hpi-icon { font-size:clamp(1.1rem,2vw,1.5rem);flex-shrink:0; }
+.hpi-text { font-family:var(--font-body);font-weight:300;font-size:var(--small-size);color:var(--text-secondary);line-height:1.45; }
+.hook-cta { position:relative;z-index:1;margin-top:clamp(1rem,2vw,1.8rem);font-family:var(--font-body);font-weight:300;font-size:var(--body-size);color:var(--text-secondary); }
+.hook-cta em { font-style:normal;color:var(--accent-gold);font-weight:500; }
+.csv-scroll-canvas { position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0.065; }
+
+/* ===========================================
+   SLIDE 18 — CSV DEMO ANIMATION
+   =========================================== */
+.csv-demo-stage { display:flex;gap:clamp(0.6rem,1.5vw,1.2rem);position:relative;z-index:1;margin-top:clamp(0.8rem,1.5vw,1.2rem);align-items:stretch; }
+.csv-panel { flex:5;border:1px solid rgba(212,165,116,0.12);background:rgba(0,0,0,0.18);padding:clamp(0.6rem,1.2vw,1rem);overflow:hidden; }
+.csv-panel-label { color:rgba(212,165,116,0.6);font-size:var(--small-size);margin-bottom:0.4em;font-family:var(--font-body); }
+.csv-row { display:grid;grid-template-columns:2.5fr 2.5fr 2fr 1.5fr 2fr;gap:4px;padding:3px 0;font-family:'IBM Plex Mono',monospace;font-size:clamp(0.58rem,0.9vw,0.7rem);color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.03);opacity:0;transition:opacity 0.35s; }
+.csv-row.vis { opacity:1; }
+.csv-row.hdr { color:rgba(212,165,116,0.65);font-weight:500; }
+.csv-row .late { color:#e8b4b8; }
+.csv-row .absent { color:#e07070; }
+.csv-arrow-col { flex:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.6rem; }
+.csv-ai-box { width:100%;border:1px solid rgba(212,165,116,0.2);background:rgba(212,165,116,0.03);padding:clamp(0.5rem,1.2vw,0.9rem);text-align:center; }
+.ai-bot-icon { font-size:clamp(1.4rem,3vw,2rem); }
+.ai-status-text { font-family:var(--font-body);font-weight:300;font-size:var(--small-size);color:var(--text-secondary);margin:0.3em 0;min-height:1.4em; }
+.ai-prog-wrap { height:3px;background:rgba(255,255,255,0.07);border-radius:2px;overflow:hidden; }
+.ai-prog-fill { height:100%;width:0%;background:linear-gradient(90deg,var(--accent-gold),var(--accent-rose));transition:width 1.5s ease; }
+.csv-arrow-label { font-size:1.4rem;color:rgba(212,165,116,0.3);animation:arrowPulse 1.5s ease-in-out infinite; }
+@keyframes arrowPulse { 0%,100%{color:rgba(212,165,116,0.2)} 50%{color:rgba(212,165,116,0.6)} }
+.csv-result-row { display:grid;grid-template-columns:3fr 2fr 1.5fr 1.5fr;gap:4px;padding:3px 0;font-family:'IBM Plex Mono',monospace;font-size:clamp(0.58rem,0.9vw,0.7rem);color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.03);opacity:0;transform:translateX(10px);transition:opacity 0.4s,transform 0.4s; }
+.csv-result-row.vis { opacity:1;transform:translateX(0); }
+.csv-result-row.hdr { color:rgba(138,171,158,0.7);font-weight:500; }
+.csv-good { color:rgba(138,171,158,0.9); }
+.csv-warn { color:#e8b4b8; }
+.csv-cycle-label { position:relative;z-index:1;margin-top:0.6rem;font-family:var(--font-body);font-weight:300;font-size:var(--small-size);color:rgba(212,165,116,0.35);text-align:center;letter-spacing:0.1em; }
+
+/* ===========================================
+   CONCEPT REDESIGN — shared styles
+   =========================================== */
+.concept-use-tag { margin-top:0.5em;font-family:var(--font-body);font-weight:300;font-size:calc(var(--small-size)*0.9);color:rgba(212,165,116,0.55);border-left:2px solid rgba(212,165,116,0.25);padding:0.3em 0.7em;line-height:1.4; }
+.cc-brain { border-color:rgba(212,165,116,0.45)!important;color:var(--accent-gold)!important;background:rgba(212,165,116,0.04)!important; }
+.cc-prompt { border-color:rgba(107,140,206,0.45)!important;color:var(--accent-blue)!important;background:rgba(107,140,206,0.04)!important; }
+.cc-know { border-color:rgba(138,171,158,0.45)!important;color:var(--accent-sage)!important;background:rgba(138,171,158,0.04)!important; }
+.cc-exec { border-color:rgba(232,180,184,0.45)!important;color:var(--accent-rose)!important;background:rgba(232,180,184,0.04)!important; }
+/* Concept Flow Canvas slide */
+.cf-stage { position:relative;z-index:1;width:100%;margin-top:clamp(0.6rem,1.5vw,1.2rem); }
+.cf-canvas { width:100%;height:clamp(200px,30vh,300px);display:block; }
+.cf-caption { position:relative;z-index:1;text-align:center;font-family:var(--font-body);font-weight:300;font-size:var(--body-size);color:var(--accent-gold);margin-top:0.8rem;letter-spacing:0.04em;min-height:1.6em;transition:opacity 0.5s; }
+
+/* ===========================================
+   SVG ILLUSTRATIONS
+   =========================================== */
+.sec-illustration { position:absolute;right:5%;top:50%;transform:translateY(-50%);z-index:0;pointer-events:none; }
+.sec-illus-top { position:absolute;top:8%;left:50%;transform:translateX(-50%);z-index:0;pointer-events:none; }
+.illus-float { animation:floatGentle 7s ease-in-out infinite; }
+.illus-float-delay { animation:floatGentle 7s ease-in-out infinite 1.5s; }
+/* Gear rotation */
+.gear-big { animation:gearSpin 22s linear infinite;transform-box:fill-box;transform-origin:50% 50%; }
+.gear-sm1 { animation:gearSpin 16s linear infinite reverse;transform-box:fill-box;transform-origin:50% 50%; }
+.gear-sm2 { animation:gearSpin 13s linear infinite;transform-box:fill-box;transform-origin:50% 50%; }
+@keyframes gearSpin { to { transform:rotate(360deg); } }
+/* Neural line shimmer override for SVG lines */
+.brain-conn { animation:brainConnPulse 3.5s ease-in-out infinite; }
+.brain-conn:nth-child(odd) { animation-delay:0.8s; }
+.brain-conn:nth-child(3n) { animation-delay:1.6s; }
+@keyframes brainConnPulse { 0%,100%{opacity:0.15} 50%{opacity:0.45} }
+/* DNA node pulse */
+.dna-node { animation:dnaNodeGlow 2.8s ease-in-out infinite; }
+.dna-node:nth-child(2n) { animation-delay:0.7s; }
+.dna-node:nth-child(3n) { animation-delay:1.4s; }
+@keyframes dnaNodeGlow { 0%,100%{r:4;opacity:0.65} 50%{r:6;opacity:1} }
+/* Constellation twinkle */
+.star-node { animation:starTwinkle 4s ease-in-out infinite; }
+.star-node:nth-child(3n) { animation-delay:1s; }
+.star-node:nth-child(5n) { animation-delay:2.2s; }
+@keyframes starTwinkle { 0%,100%{opacity:0.35} 50%{opacity:0.9} }
+
+/* ===========================================
+   SLIDE 3 — AGENDA
+   =========================================== */
+.agenda-header { position:relative;z-index:1; }
+.agenda-header h2 { font-family:var(--font-body);font-weight:200;font-size:var(--h2-size);color:var(--text-primary);letter-spacing:-0.01em; }
+.agenda-header .agenda-meta { font-family:var(--font-body);font-weight:300;font-size:var(--body-size);color:var(--text-secondary);margin-top:0.3em; }
+.module-row { display:flex;gap:clamp(1rem,2vw,2rem);position:relative;z-index:1;margin-top:clamp(1.5rem,3vw,3rem);flex-wrap:wrap; }
+.module-card { flex:1;min-width:min(100%,220px);border:1px solid rgba(255,255,255,0.06);padding:clamp(1.2rem,2.5vw,2rem);position:relative;background:rgba(255,255,255,0.015);transition:border-color 0.5s,background 0.5s,transform 0.4s; }
+.module-card:hover { border-color:rgba(212,165,116,0.25);background:rgba(255,255,255,0.03);transform:translateY(-4px); }
+.module-card .mod-num { font-family:var(--font-body);font-weight:200;font-size:clamp(3rem,6vw,5rem);color:var(--accent-gold);line-height:1;letter-spacing:-0.02em; }
+.module-card .mod-title { font-family:var(--font-body);font-weight:500;font-size:var(--body-size);color:var(--text-primary);margin-top:0.5em; }
+.module-card .mod-desc { font-family:var(--font-body);font-weight:300;font-size:var(--small-size);color:var(--text-secondary);margin-top:0.4em;line-height:1.5; }
+.mod-accent { position:absolute;top:0;right:0;width:3px;height:clamp(30px,6vh,50px); }
+.mod-accent-1 { background:var(--accent-gold); }
+.mod-accent-2 { background:var(--accent-rose); }
+.mod-accent-3 { background:var(--accent-blue); }
+
+/* ===========================================
+   SLIDE 3 / 8 / 14 — SECTION TITLES
+   =========================================== */
+.section-title-slide { justify-content:center; }
+.sec-num { font-family:var(--font-body);font-weight:200;font-size:clamp(5rem,14vw,10rem);color:var(--accent-gold);opacity:0.25;line-height:1;position:relative;z-index:1; }
+.sec-name { font-family:var(--font-body);font-weight:200;font-size:var(--h2-size);color:var(--text-primary);margin-top:-0.3em;position:relative;z-index:1;letter-spacing:-0.01em; }
+.sec-sub { font-family:var(--font-body);font-weight:300;font-size:var(--body-size);color:var(--text-secondary);margin-top:0.5em;position:relative;z-index:1; }
+
+/* ===========================================
+   SLIDE 4 — TIMELINE (6 nodes)
+   =========================================== */
+.timeline-header { position:relative;z-index:1; }
+.timeline-header h2 { font-family:var(--font-body);font-weight:200;font-size:var(--h2-size);color:var(--text-primary);letter-spacing:-0.01em; }
+.timeline-track { position:relative;z-index:1;margin-top:clamp(1.2rem,2.5vw,2.5rem); }
+.timeline-line { position:relative;height:1px;background:rgba(255,255,255,0.07);margin:clamp(1.2rem,2.5vw,2.5rem) 0; }
+.timeline-events { display:flex;justify-content:space-between;position:relative;flex-wrap:wrap;gap:clamp(0.3rem,0.8vw,0.8rem); }
+.timeline-event { flex:1;text-align:center;position:relative;min-width:90px; }
+.timeline-event::before { content:'';position:absolute;top:calc(-1*clamp(1.5rem,3vw,3rem));left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:var(--accent-gold);box-shadow:0 0 14px rgba(212,165,116,0.5); }
+.timeline-event .ev-year { font-family:var(--font-body);font-weight:200;font-size:clamp(1.2rem,2.5vw,1.8rem);color:var(--accent-gold);margin-bottom:0.2em; }
+.timeline-event .ev-title { font-family:var(--font-body);font-weight:500;font-size:var(--small-size);color:var(--text-primary); }
+.timeline-event .ev-desc { font-family:var(--font-body);font-weight:300;font-size:calc(var(--small-size)*0.85);color:var(--text-secondary);margin-top:0.15em;line-height:1.35; }
+
+/* ===========================================
+   SLIDE 5 — STAT CARDS
+   =========================================== */
+.stat-header h2 { font-family:var(--font-body);font-weight:200;font-size:var(--h2-size);color:var(--text-primary);position:relative;z-index:1;letter-spacing:-0.01em; }
+.stat-header .stat-sub { font-family:var(--font-body);font-weight:300;font-size:var(--body-size);color:var(--text-secondary);position:relative;z-index:1; }
+.stat-grid { display:flex;gap:clamp(1rem,2vw,2rem);position:relative;z-index:1;margin-top:clamp(1.2rem,2.5vw,2.5rem);flex-wrap:wrap; }
+.stat-card { flex:1;min-width:min(100%,180px);border:1px solid rgba(255,255,255,0.05);padding:clamp(1rem,2vw,1.8rem);text-align:center;background:rgba(255,255,255,0.01);transition:border-color 0.5s,background 0.5s,transform 0.4s; }
+.stat-card:hover { border-color:rgba(212,165,116,0.2);background:rgba(255,255,255,0.02);transform:translateY(-4px); }
+.stat-card .stat-big { font-family:var(--font-body);font-weight:200;font-size:clamp(2.5rem,5vw,4rem);color:var(--accent-gold);line-height:1; }
+.stat-card .stat-label { font-family:var(--font-body);font-weight:500;font-size:var(--body-size);color:var(--text-primary);margin-top:0.3em; }
+.stat-card .stat-note { font-family:var(--font-body);font-weight:300;font-size:var(--small-size);color:var(--text-secondary);margin-top:0.2em; }
+.stat-quote { margin-top:clamp(1.2rem,2.5vw,2.5rem);font-family:var(--font-body);font-weight:300;font-size:clamp(1rem,2.2vw,1.4rem);color:var(--text-secondary);opacity:0.75;position:relative;z-index:1;max-width:min(90%,650px); }
+
+/* ===========================================
+   SLIDE 6 — TREND CARDS (4 columns)
+   =========================================== */
+.trend-header h2 { font-family:var(--font-body);font-weight:200;font-size:var(--h2-size);color:var(--text-primary);position:relative;z-index:1;letter-spacing:-0.01em; }
+.trend-grid { display:flex;gap:clamp(0.8rem,1.5vw,1.5rem);position:relative;z-index:1;margin-top:clamp(1.2rem,2.5vw,2.5rem);flex-wrap:wrap; }
+.trend-card { flex:1;min-width:min(100%,190px);border:1px solid rgba(255,255,255,0.05);padding:clamp(1rem,2vw,1.6rem);text-align:center;background:rgba(255,255,255,0.01);transition:border-color 0.5s,background 0.5s,transform 0.4s;position:relative; }
+.trend-card:hover { border-color:rgba(212,165,116,0.2);background:rgba(255,255,255,0.02);transform:translateY(-4px); }
+.trend-card .tc-icon { font-size:clamp(1.4rem,3vw,2.2rem);margin-bottom:0.4em; }
+.trend-card .tc-title { font-family:var(--font-body);font-weight:500;font-size:var(--body-size);color:var(--text-primary); }
+.trend-card .tc-desc { font-family:var(--font-body);font-weight:300;font-size:var(--small-size);color:var(--text-secondary);margin-top:0.3em;line-height:1.4; }
+.trend-accent { position:absolute;bottom:0;left:0;width:100%;height:2px; }
+.ta-1 { background:var(--accent-gold); }
+.ta-2 { background:var(--accent-rose); }
+.ta-3 { background:var(--accent-blue); }
+.ta-4 { background:var(--accent-sage); }
+
+/* ===========================================
+   SLIDE 7 — TAKEAWAYS (3 big points)
+   =========================================== */
+.takeaway-header h2 { font-family:var(--font-body);font-weight:200;font-size:var(--h2-size);color:var(--text-primary);position:relative;z-index:1;letter-spacing:-0.01em; }
+.takeaway-list { display:flex;flex-direction:column;gap:clamp(0.8rem,1.5vh,1.2rem);position:relative;z-index:1;margin-top:clamp(1.2rem,2.5vw,2.5rem); }
+.takeaway-item { display:flex;align-items:flex-start;gap:clamp(0.8rem,2vw,1.5rem);padding:clamp(0.8rem,1.5vw,1.2rem);border-left:2px solid var(--accent-gold);background:rgba(255,255,255,0.015);transition:background 0.4s; }
+.takeaway-item:hover { background:rgba(255,255,255,0.03); }
+.takeaway-item .ta-num { font-family:var(--font-body);font-weight:200;font-size:clamp(2.5rem,5vw,4rem);color:var(--accent-gold);line-height:1;min-width:clamp(2.5rem,5vw,4rem); }
+.takeaway-item .ta-text h3 { font-family:var(--font-body);font-weight:500;font-size:var(--body-size);color:var(--text-primary);margin-bottom:0.2em; }
+.takeaway-item .ta-text p { font-family:var(--font-body);font-weight:300;font-size:var(--small-size);color:var(--text-secondary);line-height:1.4; }
+
+/* ===========================================
+   SLIDE 9 — CONCEPT FLOW CHAIN
+   =========================================== */
+.concept-header h2 { font-family:var(--font-body);font-weight:200;font-size:var(--h2-size);color:var(--text-primary);position:relative;z-index:1;letter-spacing:-0.01em; }
+.concept-flow { display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:clamp(0.3rem,0.8vw,0.6rem);position:relative;z-index:1;margin-top:clamp(1.2rem,2.5vw,2.5rem); }
+.concept-chip { font-family:var(--font-body);font-weight:500;font-size:var(--small-size);color:var(--text-primary);padding:clamp(0.4em,0.8vw,0.6em) clamp(0.8em,1.5vw,1.2em);border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);white-space:nowrap;transition:all 0.4s; }
+.concept-chip:hover { border-color:var(--accent-gold);color:var(--accent-gold); }
+.concept-arrow { font-family:var(--font-body);font-size:var(--body-size);color:rgba(255,255,255,0.2); }
+.concept-groups { display:flex;gap:clamp(0.8rem,1.5vw,1.5rem);position:relative;z-index:1;margin-top:clamp(1rem,2vw,2rem);flex-wrap:wrap; }
+.concept-group { flex:1;min-width:min(100%,250px);border:1px solid rgba(255,255,255,0.05);padding:clamp(0.8rem,1.5vw,1.2rem);background:rgba(255,255,255,0.01); }
+.concept-group .cg-label { font-family:var(--font-body);font-weight:500;font-size:var(--small-size);color:rgba(212,165,116,0.5);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:0.4em; }
+.concept-group .cg-items { font-family:var(--font-body);font-weight:300;font-size:var(--small-size);color:var(--text-secondary);line-height:1.5; }
+
+/* ===========================================
+   SLIDE 10 — LLM + PROMPT DETAIL
+   =========================================== */
+.detail-header h2 { font-family:var(--font-body);font-weight:200;font-size:var(--h2-size);color:var(--text-primary);position:relative;z-index:1;letter-spacing:-0.01em; }
+.detail-header .detail-tag { display:inline-block;font-family:var(--font-body);font-weight:500;font-size:var(--small-size);color:var(--accent-gold);border:1px solid rgba(212,165,116,0.3);padding:0.2em 0.8em;margin-right:0.5em; }
+.detail-two-col { display:flex;gap:clamp(1rem,2vw,2rem);position:relative;z-index:1;margin-top:clamp(1rem,2vw,2rem);flex-wrap:wrap; }
+.detail-panel { flex:1;min-width:min(100%,280px);border:1px solid rgba(255,255,255,0.05);padding:clamp(1rem,2vw,1.5rem);background:rgba(255,255,255,0.01); }
+.detail-panel h3 { font-family:var(--font-body);font-weight:300;font-size:var(--h3-size);color:var(--accent-gold);margin-bottom:0.4em; }
+.detail-panel .dp-meta { font-family:var(--font-body);font-weight:300;font-size:var(--small-size);color:var(--text-secondary);margin-bottom:0.5em;line-height:1.4; }
+.detail-panel .dp-points { list-style:none; }
+.detail-panel .dp-points li { font-family:var(--font-body);font-weight:300;font-size:var(--small-size);color:var(--text-secondary);line-height:1.5;padding-left:1em;position:relative;margin-bottom:0.3em; }
+.detail-panel .dp-points li::before { content:'·';position:absolute;left:0;color:var(--accent-gold); }
+.prompt-compare { margin-top:clamp(0.8rem,1.5vw,1.2rem); }
+.prompt-compare .pc-bad, .prompt-compare .pc-good { font-family:var(--font-body);font-size:var(--small-size);padding:clamp(0.5em,0.8vw,0.7em) clamp(0.8em,1.2vw,1em);margin-bottom:0.4em;line-height:1.4;border-left:2px solid; }
+.pc-bad { background:rgba(255,255,255,0.015);border-color:rgba(255,255,255,0.15);color:var(--text-secondary); }
+.pc-good { background:rgba(212,165,116,0.04);border-color:var(--accent-gold);color:var(--text-primary); }
+
+/* ===========================================
+   SLIDE 11 / 12 — TRIO CARDS (3 cards)
+   =========================================== */
+.trio-header h2 { font-family:var(--font-body);font-weight:200;font-size:var(--h2-size);color:var(--text-primary);position:relative;z-index:1;letter-spacing:-0.01em; }
+.trio-grid { display:flex;gap:clamp(1rem,2vw,2rem);position:relative;z-index:1;margin-top:clamp(1.2rem,2.5vw,2.5rem);flex-wrap:wrap; }
+.trio-card { flex:1;min-width:min(100%,220px);border:1px solid rgba(255,255,255,0.05);padding:clamp(1rem,2vw,1.6rem);background:rgba(255,255,255,0.01);transition:border-color 0.4s,background 0.4s,transform 0.3s; }
+.trio-card:hover { border-color:rgba(212,165,116,0.2);background:rgba(255,255,255,0.02);transform:translateY(-3px); }
+.trio-card .trio-icon { font-size:clamp(1.2rem,2.5vw,1.8rem);margin-bottom:0.3em; }
+.trio-card h3 { font-family:var(--font-body);font-weight:300;font-size:var(--h3-size);color:var(--accent-gold);margin-bottom:0.3em; }
+.trio-card .trio-sub { font-family:var(--font-body);font-weight:300;font-size:var(--small-size);color:var(--text-secondary);line-height:1.4; }
+.trio-card .trio-detail { font-family:var(--font-body);font-weight:300;font-size:var(--small-size);color:var(--text-secondary);margin-top:0.4em;line-height:1.4; }
+
+/* ===========================================
+   SLIDE 13 — WORKFLOW + SAFETY
+   =========================================== */
+.wf-header h2 { font-family:var(--font-body);font-weight:200;font-size:var(--h2-size);color:var(--text-primary);position:relative;z-index:1;letter-spacing:-0.01em; }
+.wf-two-col { display:flex;gap:clamp(1rem,2vw,2rem);position:relative;z-index:1;margin-top:clamp(1rem,2vw,2rem);flex-wrap:wrap; }
+.wf-panel { flex:1;min-width:min(100%,280px); }
+.wf-flow-box { border:1px solid rgba(255,255,255,0.06);padding:clamp(1rem,2vw,1.5rem);background:rgba(255,255,255,0.01); }
+.wf-flow-box h3 { font-family:var(--font-body);font-weight:300;font-size:var(--h3-size);color:var(--accent-gold);margin-bottom:0.5em; }
+.wf-steps { display:flex;align-items:center;flex-wrap:wrap;gap:0.3em;margin-bottom:0.8em; }
+.wf-step { font-family:var(--font-body);font-size:var(--small-size);color:var(--text-primary);background:rgba(255,255,255,0.03);padding:0.3em 0.6em; }
+.wf-arrow { color:var(--accent-gold);font-size:var(--small-size); }
+.wf-desc { font-family:var(--font-body);font-weight:300;font-size:var(--small-size);color:var(--text-secondary);line-height:1.4; }
+.safety-box { border:1px solid rgba(255,255,255,0.05);padding:clamp(1rem,2vw,1.5rem);background:rgba(255,255,255,0.01); }
+.safety-box h3 { font-family:var(--font-body);font-weight:300;font-size:var(--h3-size);color:var(--accent-rose);margin-bottom:0.5em; }
+.safety-item { font-family:var(--font-body);font-weight:300;font-size:var(--small-size);color:var(--text-secondary);line-height:1.4;margin-bottom:0.4em;padding-left:1em;position:relative; }
+.safety-item::before { content:'!';position:absolute;left:0;color:var(--accent-rose);font-weight:500; }
+
+/* ===========================================
+   SLIDE 15 — PAIN POINTS GRID
+   =========================================== */
+.pain-header h2 { font-family:var(--font-body);font-weight:200;font-size:var(--h2-size);color:var(--text-primary);position:relative;z-index:1;letter-spacing:-0.01em; }
+.pain-grid { display:flex;flex-wrap:wrap;gap:clamp(0.8rem,1.5vw,1.2rem);position:relative;z-index:1;margin-top:clamp(1.2rem,2.5vw,2rem); }
+.pain-item { flex:1;min-width:min(100%,200px);border:1px solid rgba(255,255,255,0.04);padding:clamp(0.8rem,1.5vw,1.2rem);background:rgba(255,255,255,0.008);transition:border-color 0.4s,background 0.4s; }
+.pain-item:hover { border-color:rgba(212,165,116,0.15);background:rgba(255,255,255,0.015); }
+.pain-item .pi-icon { font-size:clamp(1.2rem,2.5vw,1.8rem);margin-bottom:0.2em; }
+.pain-item .pi-text { font-family:var(--font-body);font-weight:300;font-size:var(--small-size);color:var(--text-secondary);line-height:1.4; }
+
+/* ===========================================
+   SLIDE 16 / 17 — SCENE PAIR
+   =========================================== */
+.scene-header h2 { font-family:var(--font-body);font-weight:200;font-size:var(--h2-size);color:var(--text-primary);position:relative;z-index:1;letter-spacing:-0.01em; }
+.scene-row { display:flex;gap:clamp(1rem,2vw,2rem);position:relative;z-index:1;margin-top:clamp(1rem,2vw,2rem);flex-wrap:wrap; }
+.scene-card { flex:1;min-width:min(100%,300px);border:1px solid rgba(255,255,255,0.05);padding:clamp(0.8rem,1.5vw,1.2rem);background:rgba(255,255,255,0.01);transition:border-color 0.4s; }
+.scene-card:hover { border-color:rgba(212,165,116,0.2); }
+.scene-card .sc-num { font-family:var(--font-body);font-weight:200;font-size:clamp(2rem,4vw,3rem);color:var(--accent-gold);line-height:1; }
+.scene-card h3 { font-family:var(--font-body);font-weight:300;font-size:var(--h3-size);color:var(--text-primary);margin-bottom:0.3em; }
+.scene-card .sc-subtitle { font-family:var(--font-body);font-weight:300;font-size:var(--small-size);color:var(--text-secondary);margin-bottom:0.4em; }
+.scene-compare { display:flex;gap:clamp(0.5rem,1vw,0.8rem);flex-wrap:wrap;margin-top:0.4em; }
+.sc-before, .sc-after { flex:1;min-width:120px;padding:clamp(0.5em,1vw,0.8em); }
+.sc-before { border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.01); }
+.sc-after { border:1px solid rgba(212,165,116,0.15);background:rgba(212,165,116,0.03); }
+.sc-before .sc-label, .sc-after .sc-label { font-family:var(--font-body);font-weight:500;font-size:calc(var(--small-size)*0.85);margin-bottom:0.3em; }
+.sc-before .sc-label { color:var(--text-muted); }
+.sc-after .sc-label { color:var(--accent-gold); }
+.sc-before ul, .sc-after ul { list-style:none; }
+.sc-before ul li, .sc-after ul li { font-family:var(--font-body);font-weight:300;font-size:calc(var(--small-size)*0.8);line-height:1.4;margin-bottom:0.15em;padding-left:0.8em;position:relative;color:var(--text-secondary); }
+.sc-before ul li::before { content:'—';position:absolute;left:0;color:rgba(255,255,255,0.25); }
+.sc-after ul li::before { content:'✓';position:absolute;left:0;color:var(--accent-gold); }
+
+/* ===========================================
+   SLIDE 18 — SCENE 5 + PRACTICE
+   =========================================== */
+.practice-header h2 { font-family:var(--font-body);font-weight:200;font-size:var(--h2-size);color:var(--text-primary);position:relative;z-index:1;letter-spacing:-0.01em; }
+.practice-two-col { display:flex;gap:clamp(1rem,2vw,2rem);position:relative;z-index:1;margin-top:clamp(1rem,2vw,2rem);flex-wrap:wrap; }
+.practice-panel { flex:1;min-width:min(100%,280px);border:1px solid rgba(255,255,255,0.05);padding:clamp(1rem,2vw,1.5rem);background:rgba(255,255,255,0.01); }
+.practice-panel h3 { font-family:var(--font-body);font-weight:300;font-size:var(--h3-size);color:var(--accent-gold);margin-bottom:0.3em; }
+.practice-panel .pp-sub { font-family:var(--font-body);font-weight:300;font-size:var(--small-size);color:var(--text-secondary);margin-bottom:0.5em;line-height:1.4; }
+.exercise-item { border:1px solid rgba(107,140,206,0.2);padding:clamp(0.5em,1vw,0.8em);margin-bottom:0.4em;background:rgba(107,140,206,0.03); }
+.exercise-item .ex-num { font-family:var(--font-body);font-weight:200;font-size:clamp(1.5rem,3vw,2.5rem);color:var(--accent-blue);line-height:1; }
+.exercise-item .ex-task { font-family:var(--font-body);font-weight:400;font-size:var(--small-size);color:var(--text-primary);margin-top:0.1em; }
+.exercise-item .ex-hint { font-family:var(--font-body);font-weight:300;font-size:calc(var(--small-size)*0.85);color:var(--text-secondary);margin-top:0.15em;line-height:1.3; }
+
+/* ===========================================
+   SLIDE 19 — 4 PRINCIPLES
+   =========================================== */
+.principle-header h2 { font-family:var(--font-body);font-weight:200;font-size:var(--h2-size);color:var(--text-primary);position:relative;z-index:1;letter-spacing:-0.01em; }
+.principle-grid { display:flex;flex-wrap:wrap;gap:clamp(0.8rem,1.5vw,1.2rem);position:relative;z-index:1;margin-top:clamp(1.2rem,2.5vw,2rem); }
+.principle-card { flex:1;min-width:min(100%,220px);border:1px solid rgba(255,255,255,0.05);padding:clamp(1rem,2vw,1.5rem);background:rgba(255,255,255,0.01);transition:border-color 0.4s,transform 0.3s; }
+.principle-card:hover { border-color:rgba(212,165,116,0.2);transform:translateY(-3px); }
+.principle-card .pr-icon { font-size:clamp(1.2rem,2.5vw,1.8rem);margin-bottom:0.3em; }
+.principle-card .pr-title { font-family:var(--font-body);font-weight:500;font-size:var(--body-size);color:var(--text-primary);margin-bottom:0.2em; }
+.principle-card .pr-desc { font-family:var(--font-body);font-weight:300;font-size:var(--small-size);color:var(--text-secondary);line-height:1.4; }
+
+/* ===========================================
+   SLIDE 20 — CLOSING QUOTE (split layout)
+   =========================================== */
+.split-layout { display:flex;width:100%;height:100%;position:relative;z-index:1; }
+.split-left { width:55%;display:flex;align-items:center;justify-content:center;padding:var(--slide-padding); }
+.split-right { width:45%;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden; }
+.split-left .closing-quote { font-family:var(--font-body);font-weight:200;font-size:clamp(1.5rem,4.5vw,3.2rem);color:var(--text-primary);line-height:1.2; }
+.split-left .closing-quote em { font-style:italic;color:var(--accent-gold); }
+.split-left .closing-sub { font-family:var(--font-body);font-weight:300;font-size:var(--body-size);color:var(--text-secondary);margin-top:clamp(0.8rem,2vw,1.5rem); }
+.split-right .closing-orb { width:clamp(200px,30vw,350px);height:clamp(200px,30vw,350px);border-radius:50%;background:radial-gradient(circle,rgba(212,165,116,0.12),rgba(107,140,206,0.06),transparent 70%);animation:closingGlow 5s ease-in-out infinite; }
+@keyframes closingGlow { 0%,100%{transform:scale(1);opacity:0.6} 50%{transform:scale(1.1);opacity:1} }
+
+/* ===========================================
+   SLIDE 21 — THANK YOU
+   =========================================== */
+.thanks-slide { justify-content:center;align-items:center;text-align:center; }
+
+.thanks-main { position:relative;z-index:1; }
+.thanks-main h1 { font-family:var(--font-display);font-weight:400;font-size:var(--title-size);color:var(--text-primary);line-height:1.05; }
+.thanks-main h1 em { font-style:italic;color:var(--accent-gold);font-weight:400; }
+.thanks-main .divider-thanks { width:clamp(50px,10vw,100px);height:1px;background:var(--accent-gold);margin:clamp(1.5rem,3vw,2.5rem) auto; }
+.thanks-main .thanks-sub { font-family:var(--font-body);font-weight:200;font-size:clamp(0.85rem,1.5vw,1.2rem);color:rgba(232,228,223,0.4);letter-spacing:0.12em; }
+.thanks-main .thanks-meta { font-family:var(--font-body);font-weight:200;font-size:var(--small-size);color:var(--text-muted);letter-spacing:0.18em;margin-top:clamp(1.5rem,3vw,3rem); }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="slide-counter" id="slideCounter"><span class="current" id="currentNum">01</span> / <span id="totalNum">21</span></div>
+<nav class="nav-dots" id="navDots"></nav>
+<div class="kb-hint" id="kbHint">← → 键盘 · 滚轮翻页</div>
+
+<!-- ================================================================
+     SLIDE 1 — TITLE
+     ================================================================ -->
+<section class="slide title-slide" data-index="0">
+  <div class="ambient-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tl"></div><div class="vline vline-tr"></div><div class="vline vline-bl"></div><div class="vline vline-br"></div>
+  <div class="float-shape shape-ring"></div><div class="float-shape shape-ring-2"></div><div class="float-shape shape-dot"></div><div class="float-shape shape-dot-2"></div>
+  <div class="title-main">
+    <h1 class="reveal-item" data-anim="blurIn"><span class="ai-big">AI</span>赋能工作</h1>
+    <div class="divider-main shimmer-div reveal-item" data-anim="fadeOnly" data-delay="0.3"></div>
+    <p class="subtitle reveal-item" data-anim="fadeUpSmall" data-delay="0.5">让技术为你所用</p>
+    <p class="title-meta reveal-item" data-anim="fadeOnly" data-delay="0.8" style="margin-top:clamp(2rem,4vw,3.5rem)">运城职业技术大学 · 2026</p>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 2 — HOOK（工作痛点钩子）
+     ================================================================ -->
+<section class="slide" data-index="1">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.22"></div><div class="orb orb-2" style="opacity:0.14"></div><div class="orb orb-3" style="opacity:0.12"></div></div>
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <canvas class="csv-scroll-canvas" id="csvScrollBg"></canvas>
+  <div class="vline vline-tl"></div><div class="vline vline-br"></div>
+  <div class="float-shape shape-ring"></div><div class="float-shape shape-dot"></div><div class="float-shape shape-dot-2"></div>
+  <div class="slide-content">
+    <div class="reveal-item" data-anim="fadeUp" style="position:relative;z-index:1">
+      <div class="section-label label-pulse">Before We Start</div>
+      <h2 style="font-size:var(--h2-size)">你在工作中，<br/>是否遇到过这些问题？</h2>
+      <div class="accent-divider shimmer-div"></div>
+    </div>
+    <div class="hook-pain-grid">
+      <div class="hook-pain-item reveal-item float-gentle card-glow" data-anim="fadeUp" data-delay="0.12">
+        <span class="hpi-icon">📄</span>
+        <span class="hpi-text">写通知 / 方案 / 公文，憋半天写不出来</span>
+      </div>
+      <div class="hook-pain-item reveal-item float-gentle card-glow" data-anim="fadeUp" data-delay="0.22">
+        <span class="hpi-icon">📝</span>
+        <span class="hpi-text">会议记录整理成纪要要花 1–2 小时</span>
+      </div>
+      <div class="hook-pain-item reveal-item float-gentle card-glow" data-anim="fadeUp" data-delay="0.32">
+        <span class="hpi-icon">📊</span>
+        <span class="hpi-text">几千行 Excel 数据，统计汇总全靠手工</span>
+      </div>
+      <div class="hook-pain-item reveal-item float-gentle card-glow" data-anim="fadeUp" data-delay="0.42">
+        <span class="hpi-icon">📧</span>
+        <span class="hpi-text">不确定正式邮件 / 公函的措辞是否得体</span>
+      </div>
+      <div class="hook-pain-item reveal-item float-gentle card-glow" data-anim="fadeUp" data-delay="0.52">
+        <span class="hpi-icon">🔍</span>
+        <span class="hpi-text">搜政策文件，几十页不知道要点在哪</span>
+      </div>
+    </div>
+    <p class="hook-cta reveal-item" data-anim="fadeOnly" data-delay="0.7">
+      今天，我们一起用 <em>AI</em> 解决这些问题 →
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 3 — AGENDA
+     ================================================================ -->
+<section class="slide" data-index="2">
+  <div class="ambient-orbs"><div class="orb orb-1 orb-subtle"></div><div class="orb orb-2" style="opacity:0.15"></div><div class="orb orb-3" style="opacity:0.12"></div></div>
+
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tl"></div>
+  <div class="slide-content">
+    <div class="agenda-header reveal-item" data-anim="fadeUp">
+      <div class="section-label label-pulse">Outline</div>
+      <h2>今日议程</h2>
+      <p class="agenda-meta">2小时 · 3个模块 · 从历史到实战</p>
+      <div class="accent-divider shimmer-div"></div>
+    </div>
+    <div class="module-row">
+      <div class="module-card reveal-item float-gentle card-glow" data-anim="scaleIn" data-delay="0.15">
+        <div class="mod-num gold-glow">01</div>
+        <div class="mod-title">AI发展史</div>
+        <div class="mod-desc">从 1956 到 2026<br/>70 年 AI 简史</div>
+        <div class="mod-accent mod-accent-1 accent-breath"></div>
+      </div>
+      <div class="module-card reveal-item float-gentle card-glow" data-anim="scaleIn" data-delay="0.3">
+        <div class="mod-num gold-glow">02</div>
+        <div class="mod-title">AI基本概念</div>
+        <div class="mod-desc">九个概念 · 一条逻辑链<br/>从 LLM 到工作流</div>
+        <div class="mod-accent mod-accent-2 accent-breath"></div>
+      </div>
+      <div class="module-card reveal-item float-gentle card-glow" data-anim="scaleIn" data-delay="0.45">
+        <div class="mod-num gold-glow">03</div>
+        <div class="mod-title">AI提升工作效率</div>
+        <div class="mod-desc">五个行政实战场景<br/>+ 互动演示练习</div>
+        <div class="mod-accent mod-accent-3 accent-breath"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 3 — MODULE 01 TITLE
+     ================================================================ -->
+<section class="slide section-title-slide" data-index="3">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.25"></div><div class="orb orb-2" style="opacity:0.12"></div></div>
+
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tl"></div><div class="vline vline-br"></div>
+  <div class="float-shape shape-ring"></div><div class="float-shape shape-dot"></div><div class="float-shape shape-dot-2"></div>
+  <!-- SVG: DNA 螺旋进化线 -->
+  <div class="sec-illustration illus-float" style="width:clamp(140px,20vw,240px);opacity:0.52">
+    <svg viewBox="0 0 120 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- 左链 金色 -->
+      <path d="M30,15 Q95,55 30,95 Q95,135 30,175 Q95,215 30,255 Q95,295 30,325" stroke="#d4a574" stroke-width="1.8" opacity="0.75" stroke-linecap="round"/>
+      <!-- 右链 蓝色 -->
+      <path d="M90,15 Q25,55 90,95 Q25,135 90,175 Q25,215 90,255 Q25,295 90,325" stroke="#6b8cce" stroke-width="1.3" opacity="0.5" stroke-linecap="round"/>
+      <!-- 横向连接线 -->
+      <line x1="30" y1="55"  x2="90" y2="55"  stroke="rgba(212,165,116,0.28)" stroke-width="0.9"/>
+      <line x1="30" y1="135" x2="90" y2="135" stroke="rgba(107,140,206,0.28)" stroke-width="0.9"/>
+      <line x1="30" y1="215" x2="90" y2="215" stroke="rgba(138,171,158,0.28)" stroke-width="0.9"/>
+      <line x1="30" y1="295" x2="90" y2="295" stroke="rgba(232,180,184,0.28)" stroke-width="0.9"/>
+      <!-- 发光节点 (6个) -->
+      <circle class="dna-node" cx="60" cy="15"  fill="#d4a574" filter="url(#glow1)"/>
+      <circle class="dna-node" cx="60" cy="95"  fill="#d4a574" filter="url(#glow1)"/>
+      <circle class="dna-node" cx="60" cy="175" fill="#6b8cce" filter="url(#glow2)"/>
+      <circle class="dna-node" cx="60" cy="255" fill="#8aab9e" filter="url(#glow3)"/>
+      <circle class="dna-node" cx="60" cy="325" fill="#e8b4b8" filter="url(#glow4)"/>
+      <circle cx="60" cy="15" r="2.5" fill="rgba(255,255,255,0.7)"/>
+      <circle cx="60" cy="95" r="2"   fill="rgba(255,255,255,0.6)"/>
+      <circle cx="60" cy="175" r="2.5" fill="rgba(255,255,255,0.6)"/>
+      <circle cx="60" cy="255" r="2"   fill="rgba(255,255,255,0.5)"/>
+      <circle cx="60" cy="325" r="2.5" fill="rgba(255,255,255,0.6)"/>
+      <defs>
+        <filter id="glow1"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="glow2"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="glow3"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="glow4"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+    </svg>
+  </div>
+  <div class="slide-content" style="padding-left:clamp(3rem,10vw,8rem)">
+    <span class="sec-num reveal-item gold-glow" data-anim="blurIn">01</span>
+    <h2 class="sec-name reveal-item" data-anim="fadeUp" data-delay="0.2">AI发展史</h2>
+    <p class="sec-sub reveal-item" data-anim="fadeUpSmall" data-delay="0.35">从 1956 年到 2026 年，70 年 AI 简史</p>
+    <p class="sec-sub reveal-item" data-anim="fadeOnly" data-delay="0.55" style="color:rgba(232,228,223,0.28);font-size:var(--small-size);margin-top:0.3em">AI如何从实验室走进每个人的手机？</p>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 4 — TIMELINE (6 nodes)
+     ================================================================ -->
+<section class="slide" data-index="4">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.14"></div><div class="orb orb-2" style="opacity:0.1"></div></div>
+
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tl"></div>
+  <div class="float-shape shape-dot"></div><div class="float-shape shape-dot-2"></div>
+  <div class="slide-content">
+    <div class="timeline-header reveal-item" data-anim="fadeUp">
+      <div class="section-label label-pulse">The Big Picture</div>
+      <h2>AI发展大事记</h2>
+      <div class="accent-divider shimmer-div"></div>
+    </div>
+    <div class="timeline-track">
+      <div class="timeline-line line-shimmer reveal-item" data-anim="fadeOnly" data-delay="0.3"></div>
+      <div class="timeline-events">
+        <div class="timeline-event reveal-item dot-pulse" data-anim="fadeUp" data-delay="0.1">
+          <div class="ev-year">1956</div><div class="ev-title">AI诞生</div><div class="ev-desc">达特茅斯会议<br/>「人工智能」命名</div>
+        </div>
+        <div class="timeline-event reveal-item dot-pulse" data-anim="fadeUp" data-delay="0.2">
+          <div class="ev-year">74–93</div><div class="ev-title">两次寒冬</div><div class="ev-desc">算力数据不足<br/>资金断裂，停滞</div>
+        </div>
+        <div class="timeline-event reveal-item dot-pulse" data-anim="fadeUp" data-delay="0.3">
+          <div class="ev-year">2012</div><div class="ev-title">深度学习</div><div class="ev-desc">AlexNet+GPU<br/>AlphaGo震惊世界</div>
+        </div>
+        <div class="timeline-event reveal-item dot-pulse" data-anim="fadeUp" data-delay="0.4">
+          <div class="ev-year">2017</div><div class="ev-title">Transformer</div><div class="ev-desc">谷歌提出新架构<br/>大模型时代基石</div>
+        </div>
+        <div class="timeline-event reveal-item dot-pulse" data-anim="fadeUp" data-delay="0.5">
+          <div class="ev-year">2022</div><div class="ev-title">ChatGPT</div><div class="ev-desc">5天破百万用户<br/>AI进入大众时代</div>
+        </div>
+        <div class="timeline-event reveal-item dot-pulse" data-anim="fadeUp" data-delay="0.6">
+          <div class="ev-year">24–26</div><div class="ev-title">多模态+Agent</div><div class="ev-desc">MCP·机器人智能<br/>AI全面渗透</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 5 — CHATGPT STATS
+     ================================================================ -->
+<section class="slide" data-index="5">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.22"></div><div class="orb orb-2" style="opacity:0.15"></div><div class="orb orb-3" style="opacity:0.1"></div></div>
+
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tl"></div>
+  <div class="float-shape shape-ring-2"></div><div class="float-shape shape-dot"></div>
+  <div class="slide-content">
+    <div class="stat-header reveal-item" data-anim="fadeUp">
+      <div class="section-label label-pulse">Game Changer</div>
+      <h2>2022 年：ChatGPT 改变世界</h2>
+      <p class="stat-sub">OpenAI 发布 ChatGPT — 2022年11月30日</p>
+      <div class="accent-divider shimmer-div"></div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card reveal-item float-gentle card-glow" data-anim="scaleIn" data-delay="0.1">
+        <div class="stat-big gold-glow stat-breathe" data-count="5">5</div>
+        <div class="stat-label">天 达到 100 万用户</div>
+        <div class="stat-note">Netflix 用了 3.5 年</div>
+      </div>
+      <div class="stat-card reveal-item float-gentle card-glow" data-anim="scaleIn" data-delay="0.25">
+        <div class="stat-big gold-glow stat-breathe" data-count="1">1</div>
+        <div class="stat-label">亿 月活用户</div>
+        <div class="stat-note">2 个月达成 · 史上最快</div>
+      </div>
+      <div class="stat-card reveal-item float-gentle card-glow" data-anim="scaleIn" data-delay="0.4">
+        <div class="stat-big gold-glow stat-breathe" data-count="95">95%</div>
+        <div class="stat-label">GPT-4 通过律师考试</div>
+        <div class="stat-note">超越 95% 人类考生</div>
+      </div>
+    </div>
+    <p class="stat-quote reveal-item quote-float" data-anim="fadeOnly" data-delay="0.6">这不止是一个聊天机器人的发布，<br/>这是 AI <span style="color:var(--accent-gold)">从实验室走向普通大众</span> 的历史性时刻。</p>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 6 — 2024-2026 TRENDS
+     ================================================================ -->
+<section class="slide" data-index="6">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.16"></div><div class="orb orb-2" style="opacity:0.1"></div><div class="orb orb-3" style="opacity:0.15"></div></div>
+
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tr"></div>
+  <div class="float-shape shape-ring"></div><div class="float-shape shape-dot-2"></div>
+  <div class="slide-content">
+    <div class="trend-header reveal-item" data-anim="fadeUp">
+      <div class="section-label label-pulse">Right Now</div>
+      <h2>2024–2026：我们正在经历什么</h2>
+      <div class="accent-divider shimmer-div"></div>
+    </div>
+    <div class="trend-grid">
+      <div class="trend-card reveal-item float-gentle card-glow" data-anim="scaleIn" data-delay="0.1">
+        <div class="tc-icon">🧠</div>
+        <div class="tc-title">多模态 AI</div>
+        <div class="tc-desc">文字、图像、语音、视频<br/>全打通，一站式理解</div>
+        <div class="trend-accent ta-1"></div>
+      </div>
+      <div class="trend-card reveal-item float-gentle card-glow" data-anim="scaleIn" data-delay="0.2">
+        <div class="tc-icon">🤖</div>
+        <div class="tc-title">AI Agent</div>
+        <div class="tc-desc">自主规划、执行多步任务<br/>你说目标，它来干活</div>
+        <div class="trend-accent ta-2"></div>
+      </div>
+      <div class="trend-card reveal-item float-gentle card-glow" data-anim="scaleIn" data-delay="0.3">
+        <div class="tc-icon">🔌</div>
+        <div class="tc-title">工具连接 MCP</div>
+        <div class="tc-desc">AI 接入邮件、文件、OA<br/>打破系统孤岛</div>
+        <div class="trend-accent ta-3"></div>
+      </div>
+      <div class="trend-card reveal-item float-gentle card-glow" data-anim="scaleIn" data-delay="0.4">
+        <div class="tc-icon">🦾</div>
+        <div class="tc-title">机器人智能</div>
+        <div class="tc-desc">AI 走进机器人<br/>在物理世界行动</div>
+        <div class="trend-accent ta-4"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 7 — 3 KEY TAKEAWAYS
+     ================================================================ -->
+<section class="slide" data-index="7">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.18"></div><div class="orb orb-3" style="opacity:0.15"></div></div>
+
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tl"></div><div class="vline vline-br"></div>
+  <div class="slide-content">
+    <div class="takeaway-header reveal-item" data-anim="fadeUp">
+      <div class="section-label label-pulse">Key Takeaways</div>
+      <h2>记住这三点就够了</h2>
+      <div class="accent-divider shimmer-div"></div>
+    </div>
+    <div class="takeaway-list">
+      <div class="takeaway-item reveal-item" data-anim="slideInLeft" data-delay="0.1">
+        <div class="ta-num gold-glow">1</div>
+        <div class="ta-text">
+          <h3>AI 已经到了每个人都可以用的阶段</h3>
+          <p>不需要会编程，会打字就能用 AI。</p>
+        </div>
+      </div>
+      <div class="takeaway-item reveal-item" data-anim="slideInLeft" data-delay="0.25">
+        <div class="ta-num gold-glow">2</div>
+        <div class="ta-text">
+          <h3>这不是又一次泡沫</h3>
+          <p>算力、数据、算法三要素同时成熟，历史上首次。</p>
+        </div>
+      </div>
+      <div class="takeaway-item reveal-item" data-anim="slideInLeft" data-delay="0.4">
+        <div class="ta-num gold-glow">3</div>
+        <div class="ta-text">
+          <h3>早用早受益</h3>
+          <p>现在学 AI，就像当年学会用电脑、用互联网一样重要。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 8 — MODULE 02 TITLE
+     ================================================================ -->
+<section class="slide section-title-slide" data-index="8">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.25"></div><div class="orb orb-2" style="opacity:0.1"></div><div class="orb orb-3" style="opacity:0.18"></div></div>
+
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tr"></div><div class="vline vline-bl"></div>
+  <div class="float-shape shape-ring-2"></div><div class="float-shape shape-dot"></div><div class="float-shape shape-dot-3"></div>
+  <!-- SVG: 神经网络脑图 -->
+  <div class="sec-illustration illus-float-delay" style="width:clamp(190px,27vw,310px);opacity:0.48">
+    <svg viewBox="0 0 260 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- 连接线 (先画，在节点下方) -->
+      <line class="brain-conn" x1="130" y1="32" x2="72" y2="74"  stroke="#d4a574" stroke-width="1"/>
+      <line class="brain-conn" x1="130" y1="32" x2="192" y2="68" stroke="#d4a574" stroke-width="1"/>
+      <line class="brain-conn" x1="72"  y1="74" x2="47" y2="134" stroke="#6b8cce" stroke-width="1"/>
+      <line class="brain-conn" x1="72"  y1="74" x2="132" y2="124"stroke="#d4a574" stroke-width="0.8"/>
+      <line class="brain-conn" x1="192" y1="68" x2="132" y2="124"stroke="#d4a574" stroke-width="0.8"/>
+      <line class="brain-conn" x1="192" y1="68" x2="216" y2="128"stroke="#6b8cce" stroke-width="1"/>
+      <line class="brain-conn" x1="47"  y1="134"x2="77" y2="194" stroke="#8aab9e" stroke-width="1"/>
+      <line class="brain-conn" x1="132" y1="124"x2="77" y2="194" stroke="#8aab9e" stroke-width="0.8"/>
+      <line class="brain-conn" x1="132" y1="124"x2="158" y2="198"stroke="#8aab9e" stroke-width="0.8"/>
+      <line class="brain-conn" x1="216" y1="128"x2="158" y2="198"stroke="#8aab9e" stroke-width="1"/>
+      <line class="brain-conn" x1="77"  y1="194"x2="118" y2="258"stroke="#e8b4b8" stroke-width="1"/>
+      <line class="brain-conn" x1="158" y1="198"x2="118" y2="258"stroke="#e8b4b8" stroke-width="1"/>
+      <!-- 9个节点 -->
+      <circle cx="130" cy="32"  r="14" fill="rgba(212,165,116,0.12)" stroke="#d4a574" stroke-width="1.5"/>
+      <circle cx="130" cy="32"  r="5"  fill="#d4a574" opacity="0.9"/>
+      <circle cx="72"  cy="74"  r="11" fill="rgba(212,165,116,0.1)"  stroke="#d4a574" stroke-width="1.2"/>
+      <circle cx="72"  cy="74"  r="4"  fill="#d4a574" opacity="0.8"/>
+      <circle cx="192" cy="68"  r="12" fill="rgba(107,140,206,0.1)"  stroke="#6b8cce" stroke-width="1.2"/>
+      <circle cx="192" cy="68"  r="4"  fill="#6b8cce" opacity="0.8"/>
+      <circle cx="47"  cy="134" r="10" fill="rgba(107,140,206,0.1)"  stroke="#6b8cce" stroke-width="1"/>
+      <circle cx="47"  cy="134" r="3.5"fill="#6b8cce" opacity="0.7"/>
+      <circle cx="132" cy="124" r="16" fill="rgba(212,165,116,0.08)" stroke="#d4a574" stroke-width="1.8"/>
+      <circle cx="132" cy="124" r="6"  fill="#d4a574" opacity="0.95"/>
+      <circle cx="216" cy="128" r="10" fill="rgba(107,140,206,0.1)"  stroke="#6b8cce" stroke-width="1"/>
+      <circle cx="216" cy="128" r="3.5"fill="#6b8cce" opacity="0.7"/>
+      <circle cx="77"  cy="194" r="11" fill="rgba(138,171,158,0.1)"  stroke="#8aab9e" stroke-width="1.2"/>
+      <circle cx="77"  cy="194" r="4"  fill="#8aab9e" opacity="0.8"/>
+      <circle cx="158" cy="198" r="12" fill="rgba(138,171,158,0.1)"  stroke="#8aab9e" stroke-width="1.2"/>
+      <circle cx="158" cy="198" r="4"  fill="#8aab9e" opacity="0.8"/>
+      <circle cx="118" cy="258" r="13" fill="rgba(232,180,184,0.1)"  stroke="#e8b4b8" stroke-width="1.4"/>
+      <circle cx="118" cy="258" r="4.5"fill="#e8b4b8" opacity="0.85"/>
+    </svg>
+  </div>
+  <div class="slide-content" style="padding-left:clamp(3rem,10vw,8rem)">
+    <span class="sec-num reveal-item gold-glow" data-anim="blurIn">02</span>
+    <h2 class="sec-name reveal-item" data-anim="fadeUp" data-delay="0.2">AI基本概念</h2>
+    <p class="sec-sub reveal-item" data-anim="fadeUpSmall" data-delay="0.35">七个概念 · 一条逻辑链 · 从大脑到行动</p>
+    <p class="sec-sub reveal-item" data-anim="fadeOnly" data-delay="0.55" style="color:rgba(232,228,223,0.28);font-size:var(--small-size);margin-top:0.3em">理解这七个词，你就真正看懂了 AI 能做什么</p>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 9 — CONCEPT FLOW (full chain overview)
+     ================================================================ -->
+<section class="slide" data-index="9">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.12"></div><div class="orb orb-3" style="opacity:0.15"></div></div>
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tl"></div>
+  <div class="float-shape shape-dot"></div><div class="float-shape shape-dot-2"></div>
+  <div class="slide-content">
+    <div class="concept-header reveal-item" data-anim="fadeUp">
+      <div class="section-label label-pulse">Concept Map</div>
+      <h2>七个概念 · 一条逻辑链</h2>
+      <div class="accent-divider shimmer-div"></div>
+    </div>
+    <div class="concept-flow reveal-item" data-anim="fadeUp" data-delay="0.2">
+      <span class="concept-chip cc-brain">🧠 LLM</span><span class="concept-arrow">→</span>
+      <span class="concept-chip cc-brain">👁️ 多模态</span><span class="concept-arrow">→</span>
+      <span class="concept-chip cc-prompt">💬 Prompt</span><span class="concept-arrow">→</span>
+      <span class="concept-chip cc-know">📚 RAG</span><span class="concept-arrow">→</span>
+      <span class="concept-chip cc-know">🛠️ Tool</span><span class="concept-arrow">→</span>
+      <span class="concept-chip cc-exec">🤖 Agent</span><span class="concept-arrow">→</span>
+      <span class="concept-chip cc-exec">⚡ Workflow</span>
+    </div>
+    <div class="concept-groups reveal-item" data-anim="fadeUp" data-delay="0.4">
+      <div class="concept-group float-gentle card-glow" style="border-color:rgba(212,165,116,0.12)">
+        <div class="cg-label" style="color:rgba(212,165,116,0.55)">🧠 大脑层</div>
+        <div class="cg-items">LLM — AI 的核心大脑 · 多模态 — 能看能听能画</div>
+      </div>
+      <div class="concept-group float-gentle card-glow" style="border-color:rgba(107,140,206,0.12)">
+        <div class="cg-label" style="color:rgba(107,140,206,0.6)">💬 语言层</div>
+        <div class="cg-items">Prompt — 与 AI 沟通的方式，决定 90% 的输出质量</div>
+      </div>
+      <div class="concept-group float-gentle card-glow" style="border-color:rgba(138,171,158,0.12)">
+        <div class="cg-label" style="color:rgba(138,171,158,0.6)">📚 知识+工具层</div>
+        <div class="cg-items">RAG 参考书 — 给 AI 喂资料 · Tool 双手 — 让 AI 能干活</div>
+      </div>
+      <div class="concept-group float-gentle card-glow" style="border-color:rgba(232,180,184,0.12)">
+        <div class="cg-label" style="color:rgba(232,180,184,0.6)">⚡ 执行层</div>
+        <div class="cg-items">Agent 数字员工 — 自主完成任务 · Workflow — 自动化流水线</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 10 — LLM + PROMPT DETAIL
+     ================================================================ -->
+<section class="slide" data-index="10">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.14"></div><div class="orb orb-2" style="opacity:0.1"></div></div>
+
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tr"></div>
+  <div class="float-shape shape-ring"></div>
+  <div class="slide-content">
+    <div class="detail-header reveal-item" data-anim="fadeUp">
+      <div class="section-label label-pulse">Concept 01–02 · 大脑层</div>
+      <h2><span class="detail-tag" style="border-color:rgba(212,165,116,0.4)">🧠 LLM</span> <span class="detail-tag" style="border-color:rgba(212,165,116,0.4)">👁️ 多模态</span>AI 的感知与思维</h2>
+      <div class="accent-divider shimmer-div"></div>
+    </div>
+    <div class="detail-two-col">
+      <div class="detail-panel reveal-item float-gentle card-glow" data-anim="slideInLeft" data-delay="0.1">
+        <h3>LLM — 大语言模型</h3>
+        <p class="dp-meta">就像一位读过 1 万亿本书的全科博士——你可以问他法律、医学、写作……任何问题。</p>
+        <ul class="dp-points">
+          <li>GPT-4、Claude、文心一言都是 LLM</li>
+          <li>它的知识截止于训练时间，不自动联网</li>
+        </ul>
+        <div class="concept-use-tag">你可以用它来：起草公文、解读政策、总结材料、回答任何问题</div>
+      </div>
+      <div class="detail-panel reveal-item float-gentle card-glow" data-anim="slideInRight" data-delay="0.2">
+        <h3>多模态 — Multimodal</h3>
+        <p class="dp-meta">就像给 AI 装上了眼睛、耳朵和嘴巴——不再只靠文字，还能看图、听声音、生成图片。</p>
+        <ul class="dp-points">
+          <li>📷 看图：拍张表格或文件，AI 直接读取</li>
+          <li>🎤 听音：语音输入，转文字、做摘要</li>
+          <li>🎨 画图：描述需求，AI 生成海报或图表</li>
+        </ul>
+        <div class="concept-use-tag">你可以用它来：拍照识别手写记录、语音转会议纪要、自动生成宣传配图</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 11 — PROMPT + CONTEXT WINDOW
+     ================================================================ -->
+<section class="slide" data-index="11">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.14"></div><div class="orb orb-3" style="opacity:0.16"></div></div>
+
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tl"></div><div class="vline vline-br"></div>
+  <div class="float-shape shape-ring-2"></div><div class="float-shape shape-dot-2"></div>
+  <div class="slide-content">
+    <div class="detail-header reveal-item" data-anim="fadeUp">
+      <div class="section-label label-pulse">Concept 03 · 语言层</div>
+      <h2><span class="detail-tag" style="border-color:rgba(107,140,206,0.4)">💬 Prompt</span>与 AI 沟通的方式</h2>
+      <div class="accent-divider shimmer-div"></div>
+    </div>
+    <div class="detail-two-col">
+      <div class="detail-panel reveal-item float-gentle card-glow" data-anim="slideInLeft" data-delay="0.1">
+        <h3>Prompt 三要素</h3>
+        <p class="dp-meta">你发给 AI 的每一句话都叫 Prompt。<br/>输出质量的 90%，取决于你怎么问。</p>
+        <ul class="dp-points">
+          <li><strong>角色</strong>：告诉 AI 扮演什么身份（如"你是高校行政人员"）</li>
+          <li><strong>任务</strong>：清晰描述要做什么（如"起草一份考试通知"）</li>
+          <li><strong>上下文</strong>：提供背景信息（时间、格式要求等）</li>
+        </ul>
+        <div class="prompt-compare">
+          <div class="pc-bad"><strong>差：</strong>帮我写通知</div>
+          <div class="pc-good"><strong>好：</strong>你是高校行政人员。请用正式公文格式起草一份期末考试安排通知，包含时间、地点、注意事项。</div>
+        </div>
+      </div>
+      <div class="detail-panel reveal-item float-gentle card-glow" data-anim="slideInRight" data-delay="0.2">
+        <h3 style="color:var(--accent-sage)">💡 Context Window — 上下文窗口</h3>
+        <p class="dp-meta" style="color:rgba(138,171,158,0.7)">AI 的"临时记忆容量"——每次对话能装下的字数是有上限的。</p>
+        <ul class="dp-points">
+          <li>聊太长，AI 会"忘记"对话开头说过的话</li>
+          <li>超出窗口后，早期内容会被自动丢弃</li>
+        </ul>
+        <div class="prompt-compare" style="margin-top:0.8em">
+          <div class="pc-bad"><strong>问题：</strong>AI 忘了我前面说的要求</div>
+          <div class="pc-good" style="border-color:rgba(138,171,158,0.5);background:rgba(138,171,158,0.04)"><strong>解决：</strong>① 开启新对话  ② 把重要要求放在每条消息的最前面</div>
+        </div>
+        <div class="concept-use-tag" style="border-color:rgba(138,171,158,0.2);color:rgba(138,171,158,0.7)">你可以用它来：理解为什么要"开新对话"，以及如何写出高质量提示词</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 12 — RAG + TOOL
+     ================================================================ -->
+<section class="slide" data-index="12">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.14"></div><div class="orb orb-2" style="opacity:0.1"></div><div class="orb orb-3" style="opacity:0.12"></div></div>
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tr"></div><div class="vline vline-bl"></div>
+  <div class="float-shape shape-ring"></div><div class="float-shape shape-dot"></div>
+  <div class="slide-content">
+    <div class="detail-header reveal-item" data-anim="fadeUp">
+      <div class="section-label label-pulse">Concept 04–05 · 知识+工具层</div>
+      <h2><span class="detail-tag" style="border-color:rgba(138,171,158,0.4)">📚 RAG</span> <span class="detail-tag" style="border-color:rgba(138,171,158,0.4)">🛠️ Tool</span>知识记忆与行动双手</h2>
+      <div class="accent-divider shimmer-div"></div>
+    </div>
+    <div class="detail-two-col">
+      <div class="detail-panel reveal-item float-gentle card-glow" data-anim="slideInLeft" data-delay="0.1">
+        <h3>RAG — 知识库检索</h3>
+        <p class="dp-meta">就像考试前给 AI 发一本"开卷参考书"——它查书回答，而不是凭空猜测。</p>
+        <ul class="dp-points">
+          <li>解决 AI "幻觉"（乱编内容）的核心方案</li>
+          <li>可绑定你上传的 PDF、文档、内部资料</li>
+          <li>AI 回答时会标注来源，可核查</li>
+        </ul>
+        <div class="concept-use-tag">你可以用它来：上传学校规章制度，让 AI 基于内部文件回答问题；绑定政策文件，防止 AI 瞎编</div>
+      </div>
+      <div class="detail-panel reveal-item float-gentle card-glow" data-anim="slideInRight" data-delay="0.2">
+        <h3>Tool / Plugin — 行动工具</h3>
+        <p class="dp-meta">就像给大脑装上了瑞士军刀——AI 不再只会说，还能联网搜索、运行代码、读写文件。</p>
+        <ul class="dp-points">
+          <li>🌐 联网：查实时政策、天气、新闻</li>
+          <li>📊 代码执行：帮你跑 Excel 公式、数据分析</li>
+          <li>📁 文件读写：操作文档、生成报告</li>
+        </ul>
+        <div class="concept-use-tag">你可以用它来：让 AI 联网查最新教育部文件；自动运行考勤统计脚本；直接生成 Word 版通知</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 13 — AGENT + WORKFLOW + SAFETY
+     ================================================================ -->
+<section class="slide" data-index="13">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.12"></div><div class="orb orb-3" style="opacity:0.18"></div></div>
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tl"></div>
+  <div class="float-shape shape-dot-3"></div>
+  <div class="slide-content">
+    <div class="wf-header reveal-item" data-anim="fadeUp">
+      <div class="section-label label-pulse">Concept 06–07 · 执行层</div>
+      <h2>Agent · Workflow — 自主执行与自动化</h2>
+      <div class="accent-divider shimmer-div"></div>
+    </div>
+    <div class="wf-two-col">
+      <div class="wf-panel reveal-item" data-anim="slideInLeft" data-delay="0.1">
+        <div class="wf-flow-box float-gentle card-glow">
+          <h3>🤖 Agent — 数字员工</h3>
+          <p class="wf-desc" style="margin-bottom:0.6em">就像一位懂分工的数字员工——你只说目标，它自己规划步骤、调用工具、检查结果，直到任务完成。</p>
+          <div class="wf-steps">
+            <span class="wf-step">🎯 接收目标</span><span class="wf-arrow">→</span>
+            <span class="wf-step">🗺️ 自主规划</span><span class="wf-arrow">→</span>
+            <span class="wf-step">🛠️ 调用工具</span><span class="wf-arrow">→</span>
+            <span class="wf-step">✅ 返回结果</span>
+          </div>
+          <div class="concept-use-tag" style="margin-top:0.6em">你可以用它来：全自动整理报销材料、自主搜集竞品信息并汇总成报告</div>
+        </div>
+      </div>
+      <div class="wf-panel reveal-item" data-anim="slideInRight" data-delay="0.2">
+        <div class="wf-flow-box float-gentle card-glow">
+          <h3>⚡ Workflow — 自动化流水线</h3>
+          <p class="wf-desc" style="margin-bottom:0.6em">就像一条可以反复跑的自动化生产线——把多个 Agent 和工具串联起来，一键完成一整套流程。</p>
+          <div class="wf-steps">
+            <span class="wf-step">📊 读取考勤</span><span class="wf-arrow">→</span>
+            <span class="wf-step">🔍 分析数据</span><span class="wf-arrow">→</span>
+            <span class="wf-step">✏️ 生成报告</span><span class="wf-arrow">→</span>
+            <span class="wf-step">📨 自动发送</span>
+          </div>
+          <div class="concept-use-tag" style="margin-top:0.6em">你可以用它来：每月考勤统计全自动化、新生入学流程一键串联</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 14 — CONCEPT FLOW ANIMATION（七概念协作动画）
+     ================================================================ -->
+<section class="slide" data-index="14" id="conceptFlowSlide">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.15"></div><div class="orb orb-2" style="opacity:0.1"></div><div class="orb orb-3" style="opacity:0.12"></div></div>
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tl"></div><div class="vline vline-br"></div>
+  <div class="slide-content">
+    <div class="reveal-item" data-anim="fadeUp" style="position:relative;z-index:1">
+      <div class="section-label label-pulse">Concept Summary</div>
+      <h2>七个概念 · 协同工作示意</h2>
+      <div class="accent-divider shimmer-div"></div>
+    </div>
+    <div class="cf-stage reveal-item" data-anim="fadeUp" data-delay="0.2">
+      <canvas id="conceptFlowCanvas" class="cf-canvas"></canvas>
+    </div>
+    <p class="cf-caption reveal-item" data-anim="fadeOnly" data-delay="0.4" id="cfCaption">
+      ← 七个概念环环相扣，共同构成完整的 AI 能力体系
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 15 — MODULE 03 TITLE
+     ================================================================ -->
+<section class="slide section-title-slide" data-index="15">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.22"></div><div class="orb orb-2" style="opacity:0.1"></div><div class="orb orb-3" style="opacity:0.16"></div></div>
+
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tl"></div><div class="vline vline-tr"></div>
+  <div class="float-shape shape-ring"></div><div class="float-shape shape-dot"></div><div class="float-shape shape-dot-3"></div>
+  <!-- SVG: 齿轮流水线 -->
+  <div class="sec-illustration" style="width:clamp(170px,24vw,290px);opacity:0.48">
+    <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- 大齿轮 (中心 120,130 r=70) -->
+      <g class="gear-big">
+        <circle cx="120" cy="130" r="56" stroke="#d4a574" stroke-width="1.5" fill="rgba(212,165,116,0.04)"/>
+        <circle cx="120" cy="130" r="22" stroke="#d4a574" stroke-width="1" fill="rgba(212,165,116,0.08)"/>
+        <!-- 齿 (12个) -->
+        <rect x="115" y="64"  width="10" height="16" rx="2" fill="#d4a574" opacity="0.7"/>
+        <rect x="115" y="180" width="10" height="16" rx="2" fill="#d4a574" opacity="0.7"/>
+        <rect x="54"  y="125" width="16" height="10" rx="2" fill="#d4a574" opacity="0.7"/>
+        <rect x="170" y="125" width="16" height="10" rx="2" fill="#d4a574" opacity="0.7"/>
+        <rect x="72"  y="79"  width="10" height="16" rx="2" fill="#d4a574" opacity="0.6" transform="rotate(45 77 87)"/>
+        <rect x="152" y="79"  width="10" height="16" rx="2" fill="#d4a574" opacity="0.6" transform="rotate(-45 157 87)"/>
+        <rect x="72"  y="165" width="10" height="16" rx="2" fill="#d4a574" opacity="0.6" transform="rotate(-45 77 173)"/>
+        <rect x="152" y="165" width="10" height="16" rx="2" fill="#d4a574" opacity="0.6" transform="rotate(45 157 173)"/>
+        <!-- 中心十字 -->
+        <line x1="110" y1="130" x2="130" y2="130" stroke="#d4a574" stroke-width="1.5" opacity="0.6"/>
+        <line x1="120" y1="120" x2="120" y2="140" stroke="#d4a574" stroke-width="1.5" opacity="0.6"/>
+      </g>
+      <!-- 小齿轮1 (左上 42,42 r=30) -->
+      <g class="gear-sm1">
+        <circle cx="42" cy="42" r="24" stroke="#8aab9e" stroke-width="1.2" fill="rgba(138,171,158,0.04)"/>
+        <circle cx="42" cy="42" r="9"  stroke="#8aab9e" stroke-width="0.8" fill="rgba(138,171,158,0.06)"/>
+        <rect x="38" y="12"  width="8" height="12" rx="2" fill="#8aab9e" opacity="0.65"/>
+        <rect x="38" y="60"  width="8" height="12" rx="2" fill="#8aab9e" opacity="0.65"/>
+        <rect x="12" y="38"  width="12" height="8" rx="2" fill="#8aab9e" opacity="0.65"/>
+        <rect x="60" y="38"  width="12" height="8" rx="2" fill="#8aab9e" opacity="0.65"/>
+      </g>
+      <!-- 小齿轮2 (右上 198,48 r=26) -->
+      <g class="gear-sm2">
+        <circle cx="198" cy="48" r="22" stroke="#e8b4b8" stroke-width="1.2" fill="rgba(232,180,184,0.04)"/>
+        <circle cx="198" cy="48" r="8"  stroke="#e8b4b8" stroke-width="0.8" fill="rgba(232,180,184,0.06)"/>
+        <rect x="194" y="20"  width="8" height="12" rx="2" fill="#e8b4b8" opacity="0.65"/>
+        <rect x="194" y="64"  width="8" height="12" rx="2" fill="#e8b4b8" opacity="0.65"/>
+        <rect x="170" y="44"  width="12" height="8" rx="2" fill="#e8b4b8" opacity="0.65"/>
+        <rect x="214" y="44"  width="12" height="8" rx="2" fill="#e8b4b8" opacity="0.65"/>
+      </g>
+      <!-- 箭头：大齿轮 → 右下方 -->
+      <path d="M178,178 L220,218" stroke="rgba(212,165,116,0.35)" stroke-width="1.2" stroke-dasharray="4 3"/>
+      <polygon points="220,210 220,220 210,220" fill="rgba(212,165,116,0.4)"/>
+    </svg>
+  </div>
+  <div class="slide-content" style="padding-left:clamp(3rem,10vw,8rem)">
+    <span class="sec-num reveal-item gold-glow" data-anim="blurIn">03</span>
+    <h2 class="sec-name reveal-item" data-anim="fadeUp" data-delay="0.2">AI 提升工作效率</h2>
+    <p class="sec-sub reveal-item" data-anim="fadeUpSmall" data-delay="0.35">五个行政实战场景 · 现场演示 · 动手练习</p>
+    <p class="sec-sub reveal-item" data-anim="fadeOnly" data-delay="0.55" style="color:rgba(232,228,223,0.28);font-size:var(--small-size);margin-top:0.3em">今天学到的，明天就可以用</p>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 15 — PAIN POINTS
+     ================================================================ -->
+<section class="slide" data-index="16">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.14"></div><div class="orb orb-2" style="opacity:0.1"></div></div>
+
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tl"></div>
+  <div class="float-shape shape-ring-2"></div><div class="float-shape shape-dot-2"></div>
+  <div class="slide-content">
+    <div class="pain-header reveal-item" data-anim="fadeUp">
+      <div class="section-label label-pulse">Pain Points</div>
+      <h2>你是否有过这些烦恼？</h2>
+      <div class="accent-divider shimmer-div"></div>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-item reveal-item float-gentle card-glow" data-anim="fadeUp" data-delay="0.1">
+        <div class="pi-icon">📄</div>
+        <div class="pi-text">写通知/方案/公文，不知道如何下笔，憋半天写不出来</div>
+      </div>
+      <div class="pain-item reveal-item float-gentle card-glow" data-anim="fadeUp" data-delay="0.2">
+        <div class="pi-icon">📝</div>
+        <div class="pi-text">开完会记了一堆笔记，整理成纪要要花 1-2 小时</div>
+      </div>
+      <div class="pain-item reveal-item float-gentle card-glow" data-anim="fadeUp" data-delay="0.3">
+        <div class="pi-icon">📊</div>
+        <div class="pi-text">Excel 里几千行数据，统计汇总全靠手工，又累又容易出错</div>
+      </div>
+      <div class="pain-item reveal-item float-gentle card-glow" data-anim="fadeUp" data-delay="0.4">
+        <div class="pi-icon">📧</div>
+        <div class="pi-text">给领导或合作单位写邮件/公函，不确定措辞是否正式得体</div>
+      </div>
+      <div class="pain-item reveal-item float-gentle card-glow" data-anim="fadeUp" data-delay="0.5">
+        <div class="pi-icon">🔍</div>
+        <div class="pi-text">去政府网站搜政策，结果太多，几十页文件不知道要点在哪里</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 16 — SCENE 1 + 2
+     ================================================================ -->
+<section class="slide" data-index="17">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.12"></div><div class="orb orb-3" style="opacity:0.14"></div></div>
+
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tr"></div>
+  <div class="float-shape shape-dot"></div>
+  <div class="slide-content">
+    <div class="scene-header reveal-item" data-anim="fadeUp">
+      <div class="section-label label-pulse">Live Demo</div>
+      <h2>实战场景演示</h2>
+      <div class="accent-divider shimmer-div"></div>
+    </div>
+    <div class="scene-row">
+      <div class="scene-card reveal-item float-gentle card-glow" data-anim="slideInLeft" data-delay="0.1">
+        <span class="sc-num">01</span>
+        <h3>AI 辅助公文起草</h3>
+        <p class="sc-subtitle">快速起草一份期末考试安排通知</p>
+        <div class="scene-compare">
+          <div class="sc-before">
+            <div class="sc-label">以前</div>
+            <ul>
+              <li>翻上次通知模板</li>
+              <li>逐字改日期地点要求</li>
+              <li>反复检查格式</li>
+              <li>耗时：30-60 分钟</li>
+            </ul>
+          </div>
+          <div class="sc-after">
+            <div class="sc-label">现在 (AI)</div>
+            <ul>
+              <li>输入关键信息</li>
+              <li>AI 一键生成初稿</li>
+              <li>格式规范文笔流畅</li>
+              <li>耗时：5-10 分钟</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="scene-card reveal-item float-gentle card-glow" data-anim="slideInRight" data-delay="0.2">
+        <span class="sc-num">02</span>
+        <h3>AI 整理会议纪要</h3>
+        <p class="sc-subtitle">教务处开完 1 小时会议，整理纪要</p>
+        <div class="scene-compare">
+          <div class="sc-before">
+            <div class="sc-label">以前</div>
+            <ul>
+              <li>边听边记（常漏要点）</li>
+              <li>会后整理为纪要格式</li>
+              <li>区分决议和讨论内容</li>
+              <li>耗时：1-2 小时</li>
+            </ul>
+          </div>
+          <div class="sc-after">
+            <div class="sc-label">现在 (AI)</div>
+            <ul>
+              <li>录音或笔记丢给 AI</li>
+              <li>自动提炼决议和行动项</li>
+              <li>输出标准纪要格式</li>
+              <li>耗时：10-15 分钟</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 17 — SCENE 3 + 4
+     ================================================================ -->
+<section class="slide" data-index="18">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.12"></div><div class="orb orb-2" style="opacity:0.1"></div><div class="orb orb-3" style="opacity:0.14"></div></div>
+
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tl"></div><div class="vline vline-br"></div>
+  <div class="float-shape shape-ring"></div><div class="float-shape shape-dot-2"></div>
+  <div class="slide-content">
+    <div class="scene-header reveal-item" data-anim="fadeUp">
+      <div class="section-label label-pulse">Live Demo</div>
+      <h2>实战场景演示</h2>
+      <div class="accent-divider shimmer-div"></div>
+    </div>
+    <div class="scene-row">
+      <div class="scene-card reveal-item float-gentle card-glow" data-anim="slideInLeft" data-delay="0.1">
+        <span class="sc-num">03</span>
+        <h3>AI 辅助数据处理与分析</h3>
+        <p class="sc-subtitle">统计全校考勤，生成各院系汇总</p>
+        <div class="scene-compare">
+          <div class="sc-before">
+            <div class="sc-label">以前</div>
+            <ul>
+              <li>手工 VLOOKUP/透视表</li>
+              <li>经常出现公式错误</li>
+              <li>非技术人员根本不会</li>
+              <li>耗时：数小时</li>
+            </ul>
+          </div>
+          <div class="sc-after">
+            <div class="sc-label">现在 (AI)</div>
+            <ul>
+              <li>描述需求+上传文件</li>
+              <li>AI 自动分析生成结论</li>
+              <li>无需掌握 Excel 公式</li>
+              <li>耗时：15-30 分钟</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="scene-card reveal-item float-gentle card-glow" data-anim="slideInRight" data-delay="0.2">
+        <span class="sc-num">04</span>
+        <h3>AI 优化邮件与公函措辞</h3>
+        <p class="sc-subtitle">给省教育厅写经费申请公函</p>
+        <div class="scene-compare">
+          <div class="sc-before">
+            <div class="sc-label">以前</div>
+            <ul>
+              <li>不确定格式是否正确</li>
+              <li>纠结措辞是否正式</li>
+              <li>找老同事帮忙看</li>
+              <li>耗时：反复修改半天</li>
+            </ul>
+          </div>
+          <div class="sc-after">
+            <div class="sc-label">现在 (AI)</div>
+            <ul>
+              <li>输入事由和关键信息</li>
+              <li>AI 生成正式公文</li>
+              <li>措辞得体、格式规范</li>
+              <li>耗时：10-20 分钟</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 18 — CSV DEMO ANIMATION
+     ================================================================ -->
+<section class="slide" data-index="19" id="csvDemoSlide">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.18"></div><div class="orb orb-2" style="opacity:0.1"></div><div class="orb orb-3" style="opacity:0.14"></div></div>
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tl"></div><div class="vline vline-br"></div>
+  <div class="float-shape shape-ring"></div><div class="float-shape shape-dot-2"></div>
+  <div class="slide-content">
+    <div class="reveal-item" data-anim="fadeUp" style="position:relative;z-index:1">
+      <div class="section-label label-pulse">Live Demo</div>
+      <h2>AI 如何处理 <em style="-webkit-text-fill-color:var(--accent-gold);background:none;animation:none">Excel 数据</em></h2>
+      <div class="accent-divider shimmer-div"></div>
+    </div>
+    <div class="csv-demo-stage reveal-item" data-anim="fadeUp" data-delay="0.2">
+      <!-- 左：原始数据 -->
+      <div class="csv-panel">
+        <div class="csv-panel-label">📂 原始考勤数据（节选）</div>
+        <div id="csvInputRows"></div>
+      </div>
+      <!-- 中：AI处理 -->
+      <div class="csv-arrow-col">
+        <div class="csv-ai-box" id="csvAiBox">
+          <div class="ai-bot-icon">🤖</div>
+          <div class="ai-status-text" id="aiStatusText">等待中…</div>
+          <div class="ai-prog-wrap"><div class="ai-prog-fill" id="aiProgFill"></div></div>
+        </div>
+        <div class="csv-arrow-label">→</div>
+      </div>
+      <!-- 右：输出结果 -->
+      <div class="csv-panel">
+        <div class="csv-panel-label">📊 院系汇总报告</div>
+        <div id="csvOutputRows"></div>
+      </div>
+    </div>
+    <p class="csv-cycle-label reveal-item" data-anim="fadeOnly" data-delay="0.5" id="csvCycleLabel">动画循环播放中…</p>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 19 — SCENE 5 + PRACTICE
+     ================================================================ -->
+<section class="slide" data-index="20">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.14"></div><div class="orb orb-3" style="opacity:0.16"></div></div>
+
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tr"></div>
+  <div class="float-shape shape-ring-2"></div><div class="float-shape shape-dot"></div>
+  <div class="slide-content">
+    <div class="practice-header reveal-item" data-anim="fadeUp">
+      <div class="section-label label-pulse">Scene 05 + Practice</div>
+      <h2>AI 辅助政策检索 & 动手练习</h2>
+      <div class="accent-divider shimmer-div"></div>
+    </div>
+    <div class="practice-two-col">
+      <div class="practice-panel reveal-item float-gentle card-glow" data-anim="slideInLeft" data-delay="0.1">
+        <span class="sc-num">05</span>
+        <h3>AI 辅助政策信息检索</h3>
+        <p class="pp-sub">快速了解最新职业教育相关政策要点。以前：搜政府网站结果太多 → 文件几十页找要点 → 不确定与工作关系 → 耗时 0.5-1 天。</p>
+        <p class="pp-sub">现在：输入政策文件或链接 → AI 提炼关键要点 → 分析与你工作的关联 → <strong style="color:var(--accent-gold)">耗时 10-30 分钟</strong>。</p>
+      </div>
+      <div class="practice-panel reveal-item float-gentle card-glow" data-anim="slideInRight" data-delay="0.2">
+        <h3>互动练习</h3>
+        <p class="pp-sub">打开 Claude.ai 或任意 AI 工具，现在开始！</p>
+        <div class="exercise-item" style="border-color:rgba(212,165,116,0.2);background:rgba(212,165,116,0.03)">
+          <div class="ex-num" style="color:var(--accent-gold)">练习 1</div>
+          <div class="ex-task">起草一份「端午节放假安排通知」</div>
+          <div class="ex-hint">提示：你是高校行政人员，请用正式公文格式起草… 放假时间 X月X日 至 X日…</div>
+        </div>
+        <div class="exercise-item" style="border-color:rgba(107,140,206,0.2);background:rgba(107,140,206,0.03)">
+          <div class="ex-num" style="color:var(--accent-blue)">练习 2</div>
+          <div class="ex-task">粘贴一段工作笔记，让 AI 整理成结构化纪要</div>
+          <div class="ex-hint">提示：以下是会议的原始笔记，请帮我… 提炼决议、列出各人行动项、输出标准纪要格式。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 20 — 4 PRINCIPLES
+     ================================================================ -->
+<section class="slide" data-index="21">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.16"></div><div class="orb orb-2" style="opacity:0.1"></div><div class="orb orb-3" style="opacity:0.14"></div></div>
+
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tl"></div><div class="vline vline-br"></div>
+  <div class="float-shape shape-ring"></div><div class="float-shape shape-dot-3"></div>
+  <div class="slide-content">
+    <div class="principle-header reveal-item" data-anim="fadeUp">
+      <div class="section-label label-pulse">Guidelines</div>
+      <h2>用好 AI 的四个原则</h2>
+      <div class="accent-divider shimmer-div"></div>
+    </div>
+    <div class="principle-grid">
+      <div class="principle-card reveal-item float-gentle card-glow" data-anim="scaleIn" data-delay="0.1">
+        <div class="pr-icon">✅</div>
+        <div class="pr-title">AI 是助手，不是决策者</div>
+        <div class="pr-desc">AI 给出建议和初稿，最终判断和签字永远是你的责任。重要决定不能完全依赖 AI。</div>
+      </div>
+      <div class="principle-card reveal-item float-gentle card-glow" data-anim="scaleIn" data-delay="0.2">
+        <div class="pr-icon">🔒</div>
+        <div class="pr-title">注意信息安全</div>
+        <div class="pr-desc">不要将学生个人信息、未公开合同、薪资数据等敏感内容上传给外部 AI 工具。</div>
+      </div>
+      <div class="principle-card reveal-item float-gentle card-glow" data-anim="scaleIn" data-delay="0.3">
+        <div class="pr-icon">🔍</div>
+        <div class="pr-title">验证 AI 的输出</div>
+        <div class="pr-desc">AI 可能产生不准确或编造的信息。重要文件务必人工核查关键数据和事实。</div>
+      </div>
+      <div class="principle-card reveal-item float-gentle card-glow" data-anim="scaleIn" data-delay="0.4">
+        <div class="pr-icon">📚</div>
+        <div class="pr-title">持续学习与实践</div>
+        <div class="pr-desc">AI 技术日新月异。保持好奇心，从小任务开始，逐步拓展使用场景。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 21 — CLOSING QUOTE (split)
+     ================================================================ -->
+<section class="slide" data-index="22">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.2"></div><div class="orb orb-2" style="opacity:0.12"></div><div class="orb orb-3" style="opacity:0.1"></div></div>
+
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tl"></div><div class="vline vline-tr"></div><div class="vline vline-bl"></div><div class="vline vline-br"></div>
+  <div class="split-layout">
+    <div class="split-left">
+      <div>
+        <div class="closing-quote reveal-item text" data-anim="fadeUp">AI不会取代你，</div>
+        <div class="closing-quote reveal-item text" data-anim="fadeUp" data-delay="0.3">但<em>会用AI的人</em>，</div>
+        <div class="closing-quote reveal-item text" data-anim="fadeUp" data-delay="0.55">会取代<em>不会用AI的人</em>。</div>
+        <p class="closing-sub reveal-item text" data-anim="fadeOnly" data-delay="0.9">今天学到的，明天就可以用。<br/>从一个小任务开始，让 AI 成为你最得力的同事。</p>
+      </div>
+    </div>
+    <div class="split-right">
+      <div class="closing-orb reveal-item" data-anim="fadeOnly" data-delay="0.5"></div>
+      <div class="float-shape shape-ring" style="top:30%;right:10%"></div>
+      <div class="float-shape shape-dot" style="top:25%;right:40%"></div>
+      <div class="float-shape shape-dot-2" style="bottom:30%;left:30%"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SLIDE 22 — THANK YOU
+     ================================================================ -->
+<section class="slide thanks-slide" data-index="23">
+  <div class="ambient-orbs"><div class="orb orb-1" style="opacity:0.22"></div><div class="orb orb-2" style="opacity:0.14"></div><div class="orb orb-3" style="opacity:0.12"></div></div>
+
+  <div class="grain"></div>
+  <canvas class="radar-canvas"></canvas>
+  <div class="vline vline-tl"></div><div class="vline vline-tr"></div><div class="vline vline-bl"></div><div class="vline vline-br"></div>
+  <div class="float-shape shape-ring"></div><div class="float-shape shape-dot"></div><div class="float-shape shape-dot-2"></div>
+  <div class="float-shape shape-ring-2" style="bottom:20%;right:12%"></div>
+
+  <!-- SVG: AI 星座图 -->
+  <div class="sec-illus-top illus-float" style="width:clamp(280px,46vw,500px);opacity:0.18">
+    <svg viewBox="0 0 500 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- 连接线（先画） -->
+      <line x1="60"  y1="80"  x2="110" y2="40"  stroke="#d4a574" stroke-width="0.7" opacity="0.6"/>
+      <line x1="110" y1="40"  x2="175" y2="60"  stroke="#d4a574" stroke-width="0.7" opacity="0.6"/>
+      <line x1="175" y1="60"  x2="250" y2="30"  stroke="#d4a574" stroke-width="1"   opacity="0.7"/>
+      <line x1="250" y1="30"  x2="325" y2="60"  stroke="#d4a574" stroke-width="1"   opacity="0.7"/>
+      <line x1="325" y1="60"  x2="390" y2="40"  stroke="#d4a574" stroke-width="0.7" opacity="0.6"/>
+      <line x1="390" y1="40"  x2="440" y2="80"  stroke="#d4a574" stroke-width="0.7" opacity="0.6"/>
+      <!-- 下层连接 -->
+      <line x1="60"  y1="80"  x2="130" y2="120" stroke="#6b8cce" stroke-width="0.6" opacity="0.5"/>
+      <line x1="130" y1="120" x2="210" y2="100" stroke="#6b8cce" stroke-width="0.6" opacity="0.5"/>
+      <line x1="210" y1="100" x2="250" y2="130" stroke="#8aab9e" stroke-width="0.6" opacity="0.5"/>
+      <line x1="250" y1="130" x2="290" y2="100" stroke="#8aab9e" stroke-width="0.6" opacity="0.5"/>
+      <line x1="290" y1="100" x2="370" y2="120" stroke="#6b8cce" stroke-width="0.6" opacity="0.5"/>
+      <line x1="370" y1="120" x2="440" y2="80"  stroke="#6b8cce" stroke-width="0.6" opacity="0.5"/>
+      <!-- 中层 -->
+      <line x1="110" y1="40"  x2="130" y2="120" stroke="rgba(212,165,116,0.25)" stroke-width="0.5"/>
+      <line x1="175" y1="60"  x2="210" y2="100" stroke="rgba(212,165,116,0.25)" stroke-width="0.5"/>
+      <line x1="250" y1="30"  x2="250" y2="130" stroke="rgba(212,165,116,0.3)"  stroke-width="0.8"/>
+      <line x1="325" y1="60"  x2="290" y2="100" stroke="rgba(212,165,116,0.25)" stroke-width="0.5"/>
+      <line x1="390" y1="40"  x2="370" y2="120" stroke="rgba(212,165,116,0.25)" stroke-width="0.5"/>
+      <!-- 节点 (30个，大小2–5px) -->
+      <circle class="star-node" cx="60"  cy="80"  r="4" fill="#d4a574"/>
+      <circle class="star-node" cx="110" cy="40"  r="5" fill="#d4a574"/>
+      <circle class="star-node" cx="175" cy="60"  r="3.5" fill="#d4a574"/>
+      <circle class="star-node" cx="250" cy="30"  r="6" fill="#d4a574"/>
+      <circle class="star-node" cx="325" cy="60"  r="3.5" fill="#d4a574"/>
+      <circle class="star-node" cx="390" cy="40"  r="5" fill="#d4a574"/>
+      <circle class="star-node" cx="440" cy="80"  r="4" fill="#d4a574"/>
+      <circle class="star-node" cx="130" cy="120" r="3" fill="#6b8cce"/>
+      <circle class="star-node" cx="210" cy="100" r="3.5" fill="#6b8cce"/>
+      <circle class="star-node" cx="250" cy="130" r="5" fill="#8aab9e"/>
+      <circle class="star-node" cx="290" cy="100" r="3.5" fill="#6b8cce"/>
+      <circle class="star-node" cx="370" cy="120" r="3" fill="#6b8cce"/>
+      <!-- 散布小星点 -->
+      <circle class="star-node" cx="35"  cy="50"  r="2" fill="#d4a574" opacity="0.6"/>
+      <circle class="star-node" cx="88"  cy="20"  r="2" fill="#d4a574" opacity="0.5"/>
+      <circle class="star-node" cx="145" cy="12"  r="2.5" fill="#e8b4b8" opacity="0.6"/>
+      <circle class="star-node" cx="200" cy="45"  r="2" fill="#d4a574" opacity="0.5"/>
+      <circle class="star-node" cx="220" cy="80"  r="2" fill="#8aab9e" opacity="0.6"/>
+      <circle class="star-node" cx="250" cy="10"  r="3" fill="#d4a574" opacity="0.7"/>
+      <circle class="star-node" cx="280" cy="80"  r="2" fill="#8aab9e" opacity="0.6"/>
+      <circle class="star-node" cx="300" cy="45"  r="2" fill="#d4a574" opacity="0.5"/>
+      <circle class="star-node" cx="355" cy="12"  r="2.5" fill="#e8b4b8" opacity="0.6"/>
+      <circle class="star-node" cx="412" cy="20"  r="2" fill="#d4a574" opacity="0.5"/>
+      <circle class="star-node" cx="465" cy="50"  r="2" fill="#d4a574" opacity="0.6"/>
+      <circle class="star-node" cx="155" cy="145" r="2" fill="#8aab9e" opacity="0.5"/>
+      <circle class="star-node" cx="345" cy="145" r="2" fill="#8aab9e" opacity="0.5"/>
+      <circle class="star-node" cx="185" cy="155" r="1.5" fill="#e8b4b8" opacity="0.5"/>
+      <circle class="star-node" cx="315" cy="155" r="1.5" fill="#e8b4b8" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <div class="thanks-main">
+    <h1 class="reveal-item" data-anim="blurIn">感谢聆听</h1>
+    <div class="divider-thanks shimmer-div reveal-item" data-anim="fadeOnly" data-delay="0.3"></div>
+    <p class="thanks-sub reveal-item" data-anim="fadeUpSmall" data-delay="0.5"><em style="color:var(--accent-gold);font-style:italic">AI</em>赋能工作 · 让技术为你所用</p>
+    <p class="thanks-meta reveal-item" data-anim="fadeOnly" data-delay="0.8">运城职业技术大学 · AI 赋能工作培训 · 2026</p>
+  </div>
+</section>
+
+<!-- ================================================================
+     SCRIPTS
+     ================================================================ -->
+<script>
+class SlidePresentation {
+  constructor() {
+    this.slides = Array.from(document.querySelectorAll('.slide'));
+    this.total = this.slides.length;
+    this.idx = 0;
+    this.locked = false;
+    this.tStartY = 0;
+
+    document.getElementById('totalNum').textContent = String(this.total).padStart(2,'0');
+    this.buildDots();
+    this.bindNav();
+    this.enter(0);
+    this.startRadar();
+  }
+
+  buildDots() {
+    const nav = document.getElementById('navDots');
+    for (let i = 0; i < this.total; i++) {
+      const d = document.createElement('div');
+      d.className = 'dot';
+      d.addEventListener('click', () => this.go(i));
+      nav.appendChild(d);
+    }
+
+    // Ensure every slide has all 5 floating shapes
+    const shapeDefs = ['shape-ring','shape-ring-2','shape-dot','shape-dot-2','shape-dot-3'];
+    this.slides.forEach(slide => {
+      const existing = slide.querySelectorAll('.float-shape');
+      if (existing.length < 5) {
+        shapeDefs.forEach(cls => {
+          if (!slide.querySelector(`.float-shape.${cls}`)) {
+            const div = document.createElement('div');
+            div.className = `float-shape ${cls}`;
+            slide.appendChild(div);
+          }
+        });
+      }
+    });
+  }
+
+  bindNav() {
+    document.addEventListener('keydown', e => {
+      const k = e.key;
+      if (['ArrowDown','ArrowRight',' ','PageDown'].includes(k)) { e.preventDefault(); this.go(this.idx+1); }
+      else if (['ArrowUp','ArrowLeft','PageUp'].includes(k)) { e.preventDefault(); this.go(this.idx-1); }
+      else if (k === 'Home') { e.preventDefault(); this.go(0); }
+      else if (k === 'End') { e.preventDefault(); this.go(this.total-1); }
+    });
+
+    let t;
+    document.addEventListener('wheel', e => {
+      e.preventDefault();
+      if (this.locked) return;
+      clearTimeout(t);
+      t = setTimeout(() => {
+        if (e.deltaY > 15) this.go(this.idx+1);
+        else if (e.deltaY < -15) this.go(this.idx-1);
+      }, 80);
+    }, { passive: false });
+
+    document.addEventListener('touchstart', e => { this.tStartY = e.touches[0].clientY; }, { passive: true });
+    document.addEventListener('touchend', e => {
+      const d = this.tStartY - e.changedTouches[0].clientY;
+      if (Math.abs(d) > 50) this.go(d > 0 ? this.idx+1 : this.idx-1);
+    });
+  }
+
+  go(target) {
+    if (target < 0 || target >= this.total || this.locked) return;
+    this.locked = true;
+
+    const prev = this.slides[this.idx];
+    if (prev) prev.classList.remove('entered');
+
+    this.idx = target;
+    this.slides[target].scrollIntoView({ behavior: 'smooth' });
+
+    setTimeout(() => {
+      this.enter(target);
+      this.ui();
+      this.locked = false;
+    }, 400);
+  }
+
+  enter(idx) {
+    const slide = this.slides[idx];
+    if (!slide) return;
+
+    const items = slide.querySelectorAll('.reveal-item');
+
+    // First visit: do entrance animation
+    if (!slide._done) {
+      slide._done = true;
+      let maxEnd = 0;
+      items.forEach(el => {
+        const anim = el.dataset.anim || 'fadeUp';
+        const delay = parseFloat(el.dataset.delay) || 0;
+        const durMap = { blurIn: '0.9s', fadeOnly: '1s', scaleIn: '0.7s', popIn: '0.6s', fadeUp: '0.65s', fadeUpSmall: '0.55s', slideInLeft: '0.7s', slideInRight: '0.7s' };
+        const dur = durMap[anim] || '0.65s';
+
+        el.style.animation = 'none';
+        el.style.opacity = '0';
+        el.offsetHeight;
+        el.style.animation = `${anim} ${dur} cubic-bezier(0.16,1,0.3,1) ${delay}s forwards`;
+
+        const end = (delay + parseFloat(dur)) * 1000;
+        if (end > maxEnd) maxEnd = end;
+      });
+
+      setTimeout(() => {
+        slide.classList.add('entered');
+      }, maxEnd + 400);
+    } else {
+      // Returning to a previously visited slide — just reinstate .entered
+      slide.classList.add('entered');
+    }
+  }
+
+  ui() {
+    document.querySelectorAll('.nav-dots .dot').forEach((d,i) => d.classList.toggle('active', i===this.idx));
+    document.getElementById('currentNum').textContent = String(this.idx+1).padStart(2,'0');
+    document.getElementById('progressBar').style.width = ((this.idx+1)/this.total*100)+'%';
+  }
+
+  startRadar() {
+    const canvases = document.querySelectorAll('.radar-canvas');
+    const ticks = []; // one ticker per canvas offset
+
+    canvases.forEach((canvas, ci) => {
+      ticks[ci] = ci * 0.7; // stagger each slide's radar
+    });
+
+    const drawAll = () => {
+      canvases.forEach((canvas, ci) => {
+        const slide = canvas.closest('.slide');
+        if (!slide || !slide.classList.contains('visible') && slide.dataset.index != this.idx) {
+          // Only draw on visible/active slide canvas for performance
+          // But we still advance the tick
+        }
+        // Advance tick
+        ticks[ci] += 0.003;
+        if (ticks[ci] > 1) ticks[ci] -= 1;
+
+        const w = canvas.clientWidth;
+        const h = canvas.clientHeight;
+        if (canvas.width !== w || canvas.height !== h) {
+          canvas.width = w;
+          canvas.height = h;
+        }
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, w, h);
+
+        const gridSize = 40;
+        const scanX = ticks[ci] * (w + gridSize * 6) - gridSize * 3;
+
+        // Draw vertical grid lines with radar highlight
+        for (let x = 0; x <= w; x += gridSize) {
+          const dist = Math.abs(x - scanX);
+          const glowWidth = gridSize * 4; // how wide the "wave" is
+          if (dist < glowWidth) {
+            const alpha = (1 - dist / glowWidth) * 0.5;
+            ctx.strokeStyle = `rgba(212,165,116,${alpha.toFixed(3)})`;
+            ctx.lineWidth = 1.5;
+            ctx.shadowColor = `rgba(212,165,116,${(alpha * 0.6).toFixed(3)})`;
+            ctx.shadowBlur = 4;
+          } else {
+            ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+            ctx.lineWidth = 0.5;
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+          }
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, h);
+          ctx.stroke();
+        }
+
+        // Draw horizontal grid lines
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+        ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+        ctx.lineWidth = 0.5;
+        for (let y = 0; y <= h; y += gridSize) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(w, y);
+          ctx.stroke();
+        }
+      });
+      this._radarRaf = requestAnimationFrame(drawAll);
+    };
+
+    drawAll();
+  }
+}
+
+new SlidePresentation();
+
+setTimeout(() => {
+  const h = document.getElementById('kbHint');
+  if (h) h.style.opacity = '0';
+}, 10000);
+setTimeout(() => {
+  const h = document.getElementById('kbHint');
+  if (h) h.remove();
+}, 13000);
+
+/* ============================================================
+   CSV SCROLL BACKGROUND — Slide 2 hook page
+   ============================================================ */
+function startCsvScroll() {
+  const canvas = document.getElementById('csvScrollBg');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const names = ['张伟','李娜','王芳','刘洋','陈静','杨帆','赵磊','黄婷','周强','吴雪','郑凯','孙丽','林涛','徐明','马燕','何俊','朱琳','高鹏','肖敏','梁辉'];
+  const depts = ['信息工程','经济管理','艺术设计','机电工程','建筑规划','基础部'];
+  const months = ['03月','04月','05月'];
+  const statuses = ['正常','正常','正常','正常','迟到','缺勤'];
+
+  const rows = names.map((n, i) => [
+    n,
+    depts[i % depts.length],
+    months[i % months.length],
+    String(18 + Math.floor(Math.random() * 4)),
+    statuses[Math.floor(Math.random() * statuses.length)]
+  ]);
+  const header = ['姓名','院系','月份','出勤','状态'];
+
+  const ROW_H = 20;
+  const COLS_X = [10, 90, 190, 265, 320];
+  let offset = 0;
+
+  function draw() {
+    const w = canvas.clientWidth || canvas.parentElement.clientWidth;
+    const h = canvas.clientHeight || canvas.parentElement.clientHeight;
+    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+    ctx.clearRect(0, 0, w, h);
+    ctx.font = '11px "IBM Plex Mono", monospace';
+
+    const allRows = [header, ...rows];
+    const totalH = allRows.length * ROW_H;
+    offset = (offset + 0.35) % totalH;
+
+    allRows.forEach((row, ri) => {
+      const y = (ri * ROW_H - offset + totalH * 2) % totalH;
+      if (y < -ROW_H || y > h + ROW_H) return;
+      row.forEach((cell, ci) => {
+        const isHeader = ri === 0;
+        ctx.fillStyle = isHeader ? 'rgba(212,165,116,0.9)' : 'rgba(212,165,116,0.75)';
+        ctx.fillText(cell, COLS_X[ci], y);
+      });
+      ctx.strokeStyle = 'rgba(212,165,116,0.15)';
+      ctx.lineWidth = 0.5;
+      ctx.beginPath(); ctx.moveTo(0, y + 4); ctx.lineTo(w, y + 4); ctx.stroke();
+    });
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+startCsvScroll();
+
+/* ============================================================
+   CSV DEMO ANIMATION — Slide 18
+   ============================================================ */
+function initCsvDemo() {
+  const demoSlide = document.getElementById('csvDemoSlide');
+  if (!demoSlide) return;
+
+  const inputData = [
+    ['姓名','院系','月份','出勤','状态'],
+    ['张伟','信息工程','03月','19','正常'],
+    ['李娜','经济管理','03月','20','正常'],
+    ['王芳','艺术设计','03月','17','迟到'],
+    ['刘洋','信息工程','03月','18','正常'],
+    ['陈静','机电工程','03月','20','正常'],
+    ['杨帆','建筑规划','03月','19','迟到'],
+    ['赵磊','经济管理','03月','20','正常'],
+    ['黄婷','艺术设计','03月','15','缺勤'],
+    ['周强','信息工程','03月','18','迟到'],
+    ['吴雪','机电工程','03月','20','正常'],
+    ['郑凯','建筑规划','03月','19','正常'],
+    ['孙丽','基础部','03月','20','正常'],
+  ];
+
+  const outputData = [
+    ['院系','出勤率','迟到','缺勤'],
+    ['信息工程','94%','12','3'],
+    ['经济管理','97%','5','1'],
+    ['艺术设计','91%','18','6'],
+    ['机电工程','96%','8','2'],
+    ['建筑规划','95%','9','3'],
+  ];
+
+  const inputEl  = document.getElementById('csvInputRows');
+  const outputEl = document.getElementById('csvOutputRows');
+  const statusEl = document.getElementById('aiStatusText');
+  const progEl   = document.getElementById('aiProgFill');
+
+  let timers = [];
+  let cycling = false;
+
+  function t(fn, ms) { const id = setTimeout(fn, ms); timers.push(id); return id; }
+
+  function reset() {
+    timers.forEach(clearTimeout); timers = [];
+    if (inputEl)  inputEl.innerHTML  = '';
+    if (outputEl) outputEl.innerHTML = '';
+    if (statusEl) statusEl.textContent = '等待中…';
+    if (progEl)   { progEl.style.transition = 'none'; progEl.style.width = '0%'; }
+  }
+
+  function buildRow(data, isResult, isHeader) {
+    const div = document.createElement('div');
+    div.className = isResult
+      ? ('csv-result-row' + (isHeader ? ' hdr' : ''))
+      : ('csv-row' + (isHeader ? ' hdr' : ''));
+    data.forEach((cell, ci) => {
+      const span = document.createElement('span');
+      span.textContent = cell;
+      if (!isHeader && isResult) {
+        if (ci === 1) span.className = parseFloat(cell) >= 95 ? 'csv-good' : 'csv-warn';
+        if ((ci === 2 || ci === 3) && parseInt(cell) >= 10) span.className = 'csv-warn';
+      }
+      if (!isHeader && !isResult) {
+        if (ci === 4 && cell === '迟到') span.className = 'late';
+        if (ci === 4 && cell === '缺勤') span.className = 'absent';
+      }
+      div.appendChild(span);
+    });
+    return div;
+  }
+
+  function runCycle() {
+    reset();
+    cycling = true;
+
+    // Phase 1: render input rows one by one (0 → ~2.6s)
+    inputData.forEach((row, ri) => {
+      t(() => {
+        const isHeader = ri === 0;
+        const div = buildRow(row, false, isHeader);
+        inputEl.appendChild(div);
+        requestAnimationFrame(() => div.classList.add('vis'));
+      }, ri * 200);
+    });
+
+    // Phase 2: AI processing bar (2.8s → 4.6s)
+    t(() => {
+      if (statusEl) statusEl.textContent = '分析中…';
+      if (progEl) { progEl.style.transition = 'width 0.8s ease'; progEl.style.width = '45%'; }
+    }, 2800);
+    t(() => {
+      if (statusEl) statusEl.textContent = '生成报告…';
+      if (progEl) { progEl.style.transition = 'width 0.7s ease'; progEl.style.width = '80%'; }
+    }, 3700);
+    t(() => {
+      if (statusEl) statusEl.textContent = '✓ 完成';
+      if (progEl) { progEl.style.transition = 'width 0.5s ease'; progEl.style.width = '100%'; }
+    }, 4500);
+
+    // Phase 3: render output rows (4.8s → ~6.6s)
+    outputData.forEach((row, ri) => {
+      t(() => {
+        const isHeader = ri === 0;
+        const div = buildRow(row, true, isHeader);
+        outputEl.appendChild(div);
+        requestAnimationFrame(() => div.classList.add('vis'));
+      }, 4800 + ri * 350);
+    });
+
+    // Reset and loop (8.5s)
+    t(() => { runCycle(); }, 8500);
+  }
+
+  // Start when slide gets .entered class; reset when it loses it
+  let wasEntered = false;
+  const obs = new MutationObserver(() => {
+    const isEntered = demoSlide.classList.contains('entered');
+    if (isEntered && !wasEntered) { wasEntered = true; runCycle(); }
+    if (!isEntered && wasEntered) { wasEntered = false; reset(); cycling = false; }
+  });
+  obs.observe(demoSlide, { attributes: true, attributeFilter: ['class'] });
+}
+initCsvDemo();
+
+/* ============================================================
+   CONCEPT FLOW ANIMATION — Slide 14
+   Seven nodes with glowing particles flowing left-to-right
+   ============================================================ */
+function initConceptFlow() {
+  const slide = document.getElementById('conceptFlowSlide');
+  const canvas = document.getElementById('conceptFlowCanvas');
+  const caption = document.getElementById('cfCaption');
+  if (!slide || !canvas || !caption) return;
+
+  const nodes = [
+    { icon:'🧠', label:'LLM',    sub:'AI 的大脑',    color:'#d4a574', layer:'大脑层' },
+    { icon:'👁️', label:'多模态',  sub:'能看能听能画',  color:'#d4a574', layer:'大脑层' },
+    { icon:'💬', label:'Prompt', sub:'沟通的语言',    color:'#6b8cce', layer:'语言层' },
+    { icon:'📚', label:'RAG',    sub:'开卷参考书',    color:'#8aab9e', layer:'知识层' },
+    { icon:'🛠️', label:'Tool',   sub:'行动双手',     color:'#8aab9e', layer:'工具层' },
+    { icon:'🤖', label:'Agent',  sub:'数字员工',     color:'#e8b4b8', layer:'执行层' },
+    { icon:'⚡', label:'Workflow',sub:'自动流水线',   color:'#e8b4b8', layer:'执行层' },
+  ];
+
+  const captions = [
+    '🧠 LLM — 读过万亿本书的全科博士，是一切的起点',
+    '👁️ 多模态 — 给 AI 装上眼睛、耳朵和嘴巴',
+    '💬 Prompt — 你怎么说，决定它怎么做',
+    '📚 RAG — 给 AI 一本开卷参考书，防止它瞎编',
+    '🛠️ Tool — 瑞士军刀，让 AI 能联网、算数、写文件',
+    '🤖 Agent — 懂分工的数字员工，自主完成任务',
+    '⚡ Workflow — 把所有能力串成全自动流水线',
+  ];
+
+  // Particle pool
+  const particles = [];
+  let activeNode = -1;
+  let nodePositions = [];
+  let raf = null;
+  let timers = [];
+  let tick = 0;
+
+  function t(fn, ms) { const id = setTimeout(fn, ms); timers.push(id); }
+  function clearAll() { timers.forEach(clearTimeout); timers = []; if (raf) { cancelAnimationFrame(raf); raf = null; } particles.length = 0; activeNode = -1; }
+
+  function spawnParticle(fromX, fromY, toX, toY, color) {
+    particles.push({ x: fromX, y: fromY, tx: toX, ty: toY, prog: 0, speed: 0.012 + Math.random() * 0.008, color, alpha: 1 });
+  }
+
+  function draw() {
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, w, h);
+
+    const n = nodes.length;
+    const margin = w * 0.06;
+    const spacing = (w - margin * 2) / (n - 1);
+    const cy = h * 0.45;
+    const r = Math.min(w * 0.055, 38);
+    nodePositions = nodes.map((_, i) => ({ x: margin + i * spacing, y: cy }));
+
+    // Draw connecting lines
+    for (let i = 0; i < n - 1; i++) {
+      const a = nodePositions[i], b = nodePositions[i + 1];
+      ctx.beginPath();
+      ctx.moveTo(a.x + r, a.y);
+      ctx.lineTo(b.x - r, b.y);
+      const isActive = (activeNode === i || activeNode === i + 1);
+      ctx.strokeStyle = isActive ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.07)';
+      ctx.lineWidth = isActive ? 1.5 : 0.8;
+      ctx.stroke();
+
+      // Arrow head
+      const ax = b.x - r - 6, ay = b.y;
+      ctx.beginPath();
+      ctx.moveTo(ax, ay - 4);
+      ctx.lineTo(ax + 6, ay);
+      ctx.lineTo(ax, ay + 4);
+      ctx.strokeStyle = isActive ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.1)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    // Draw nodes
+    nodes.forEach((nd, i) => {
+      const { x, y } = nodePositions[i];
+      const isActive = activeNode === i;
+      const glow = isActive ? 0.9 : 0.25;
+
+      // Outer glow ring
+      if (isActive) {
+        const grad = ctx.createRadialGradient(x, y, r * 0.8, x, y, r * 1.8);
+        grad.addColorStop(0, nd.color + '33');
+        grad.addColorStop(1, 'transparent');
+        ctx.beginPath(); ctx.arc(x, y, r * 1.8, 0, Math.PI * 2);
+        ctx.fillStyle = grad; ctx.fill();
+      }
+
+      // Node circle
+      ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.fillStyle = isActive ? nd.color + '22' : 'rgba(255,255,255,0.03)';
+      ctx.fill();
+      ctx.strokeStyle = isActive ? nd.color : nd.color + '55';
+      ctx.lineWidth = isActive ? 2 : 1;
+      ctx.stroke();
+
+      // Icon
+      ctx.font = `${Math.round(r * 0.72)}px serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.globalAlpha = isActive ? 1 : 0.5;
+      ctx.fillText(nd.icon, x, y - 1);
+      ctx.globalAlpha = 1;
+
+      // Label below
+      ctx.font = `500 ${Math.round(r * 0.42)}px 'IBM Plex Sans', sans-serif`;
+      ctx.fillStyle = isActive ? nd.color : 'rgba(255,255,255,0.4)';
+      ctx.fillText(nd.label, x, y + r + 14);
+
+      // Sub-label
+      ctx.font = `300 ${Math.round(r * 0.33)}px 'IBM Plex Sans', sans-serif`;
+      ctx.fillStyle = isActive ? 'rgba(255,255,255,0.55)' : 'rgba(255,255,255,0.2)';
+      ctx.fillText(nd.sub, x, y + r + 26);
+    });
+
+    // Update & draw particles
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      p.prog += p.speed;
+      if (p.prog >= 1) { particles.splice(i, 1); continue; }
+      const ease = p.prog < 0.5 ? 2 * p.prog * p.prog : -1 + (4 - 2 * p.prog) * p.prog;
+      const px = p.x + (p.tx - p.x) * ease;
+      const py = p.y + (p.ty - p.y) * ease + Math.sin(p.prog * Math.PI) * -8;
+      p.alpha = Math.sin(p.prog * Math.PI);
+      ctx.beginPath(); ctx.arc(px, py, 3, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + Math.round(p.alpha * 255).toString(16).padStart(2, '0');
+      ctx.fill();
+    }
+
+    raf = requestAnimationFrame(draw);
+  }
+
+  function activateNode(idx) {
+    activeNode = idx;
+    if (caption) {
+      caption.style.opacity = '0';
+      setTimeout(() => {
+        caption.textContent = captions[idx] || '';
+        caption.style.opacity = '1';
+      }, 250);
+    }
+    // Spawn particles toward next node
+    if (idx < nodes.length - 1 && nodePositions[idx]) {
+      const from = nodePositions[idx], to = nodePositions[idx + 1];
+      const nd = nodes[idx];
+      for (let k = 0; k < 5; k++) {
+        setTimeout(() => spawnParticle(from.x, from.y, to.x, to.y, nd.color), k * 120);
+      }
+    }
+  }
+
+  function runCycle() {
+    activeNode = -1;
+    nodes.forEach((_, i) => {
+      t(() => activateNode(i), i * 950);
+    });
+    // Loop after all nodes highlighted
+    t(() => runCycle(), nodes.length * 950 + 800);
+  }
+
+  let wasEntered = false;
+  const obs = new MutationObserver(() => {
+    const isEntered = slide.classList.contains('entered');
+    if (isEntered && !wasEntered) {
+      wasEntered = true;
+      draw();
+      t(() => runCycle(), 500);
+    }
+    if (!isEntered && wasEntered) {
+      wasEntered = false;
+      clearAll();
+    }
+  });
+  obs.observe(slide, { attributes: true, attributeFilter: ['class'] });
+}
+initConceptFlow();
+</script>
+</body>
+</html>
