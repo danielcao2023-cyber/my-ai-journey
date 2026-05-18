@@ -1,0 +1,102 @@
+:root {
+  --color-bg: #fefcf5;
+  --color-card: #fffdf7;
+  --color-border: #efe4cf;
+  --color-border-light: #f0e8d8;
+  --color-heading: #4a3724;
+  --color-text: #5c4a2e;
+  --color-muted: #8b7355;
+  --color-muted-light: #9b8c7a;
+  --color-subtle: #bfae94;
+  --color-accent: #8b6914;
+  --color-tag-bg: #f5efe0;
+  --color-code-bg: #faf6ed;
+  --max-width: 640px;
+  --font-serif: 'Georgia', 'Noto Serif SC', 'Source Han Serif SC', serif;
+  --font-sans: 'Inter', 'Noto Sans SC', 'Source Han Sans SC', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+body {
+  font-family: var(--font-serif);
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-heading);
+  font-family: var(--font-sans);
+  line-height: 1.4;
+}
+
+h2 { font-size: 1.5rem; margin: 2rem 0 0.75rem; }
+h3 { font-size: 1.25rem; margin: 1.5rem 0 0.5rem; }
+
+p { margin-bottom: 1rem; }
+
+pre {
+  background: var(--color-code-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+
+:not(pre) > code {
+  background: var(--color-code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  border: 1px solid var(--color-border-light);
+  color: var(--color-accent);
+}
+
+blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding: 0.5rem 0 0.5rem 1.25rem;
+  margin: 1.25rem 0;
+  color: var(--color-muted);
+  background: var(--color-code-bg);
+  border-radius: 0 8px 8px 0;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
