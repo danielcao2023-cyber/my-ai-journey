@@ -1,0 +1,37 @@
+---
+export interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  title = '探索 AI 的旅程',
+  subtitle = '记录学习过程中的思考、实验与心得',
+} = Astro.props;
+---
+
+<section class="hero">
+  <div class="container">
+    <h1 class="hero-title">{title}</h1>
+    <p class="hero-subtitle">{subtitle}</p>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 3rem 0 2rem;
+    text-align: center;
+  }
+  .hero-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--color-heading);
+    margin: 0 0 0.5rem;
+  }
+  .hero-subtitle {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    margin: 0;
+  }
+</style>
