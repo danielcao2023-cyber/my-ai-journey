@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const posts = await getCollection('posts');
+const tagMap = new Map<string, number>();
+
+for (const post of posts) {
+  for (const tag of post.data.tags) {
+    tagMap.set(tag, (tagMap.get(tag) || 0) + 1);
+  }
+}
+
+const allTags = [...tagMap.entries()]
+  .sort((a, b) => b[1] - a[1]);
+---
+
+<BaseLayout title="标签 - AI 学习笔记">
+  <Header />
+  <main class="container">
+    <h1 class="page-title">标签</h1>
+    <div class="tag-cloud">
+      {allTags.map(([tag, count]) => (
+        <a href={`/tags/${tag}`} class="tag-item">
+          #{tag}
+          <span class="tag-count">{count}</span>
+        </a>
+      ))}
+    </div>
+    {allTags.length === 0 && (
+      <p class="empty">还没有标签。</p>
+    )}
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page-title {
+    font-size: 1.5rem;
+    margin: 2.5rem 0 1.5rem;
+    text-align: center;
+  }
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+  .tag-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.4em 1em;
+    background: var(--color-tag-bg);
+    border-radius: 16px;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .tag-item:hover {
+    background: var(--color-border);
+    text-decoration: none;
+  }
+  .tag-count {
+    font-size: 0.75rem;
+    color: var(--color-muted-light);
+  }
+  .empty {
+    text-align: center;
+    color: var(--color-muted-light);
+    font-family: var(--font-sans);
+    padding: 3rem 0;
+  }
+</style>

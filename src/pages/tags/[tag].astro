@@ -1,0 +1,66 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PostCard from '../../components/PostCard.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  const tagSet = new Set<string>();
+  for (const post of posts) {
+    for (const tag of post.data.tags) {
+      tagSet.add(tag);
+    }
+  }
+  return [...tagSet].map(tag => ({ params: { tag } }));
+}
+
+const { tag } = Astro.params;
+
+const allPosts = await getCollection('posts');
+const posts = allPosts
+  .filter(post => post.data.tags.includes(tag!))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title={`#${tag} - AI 学习笔记`}>
+  <Header />
+  <main class="container">
+    <h1 class="page-title">#{tag}</h1>
+    <p class="page-subtitle">{posts.length} 篇文章</p>
+    <div class="post-list">
+      {posts.map(post => <PostCard post={post} />)}
+    </div>
+    <footer class="back-link">
+      <a href="/tags">← 查看所有标签</a>
+    </footer>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page-title {
+    font-size: 1.5rem;
+    margin: 2.5rem 0 0.25rem;
+    text-align: center;
+  }
+  .page-subtitle {
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--color-muted-light);
+    margin: 0 0 2rem;
+  }
+  .post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .back-link {
+    margin-top: 2rem;
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+  }
+</style>
