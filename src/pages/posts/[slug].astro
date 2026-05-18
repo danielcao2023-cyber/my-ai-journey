@@ -1,0 +1,89 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import TagBadge from '../../components/TagBadge.astro';
+import CommentSection from '../../components/CommentSection.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map(post => ({
+    params: { slug: post.id.replace(/\.md$/, '') },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { title, date, tags } = post.data;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={`${title} - AI 学习笔记`} description={post.data.description}>
+  <Header />
+  <article class="container article">
+    <header class="article-header">
+      <div class="article-tags">
+        {tags.map(tag => <TagBadge tag={tag} />)}
+      </div>
+      <h1>{title}</h1>
+      <div class="article-meta">
+        <time datetime={date.toISOString()}>
+          {date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+        <span class="reading-time">约 {Math.ceil(post.body.split(/\s+/).length / 300)} 分钟阅读</span>
+      </div>
+    </header>
+    <div class="article-content">
+      <Content />
+    </div>
+    <CommentSection />
+    <footer class="article-back">
+      <a href="/">← 返回首页</a>
+    </footer>
+  </article>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .article {
+    padding-top: 2.5rem;
+    padding-bottom: 2rem;
+  }
+  .article-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+  .article-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+  }
+  .article-header h1 {
+    font-size: 1.6rem;
+    margin: 0 0 0.5rem;
+  }
+  .article-meta {
+    display: flex;
+    gap: 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--color-subtle);
+  }
+  .reading-time::before {
+    content: '·';
+    margin-right: 0.5rem;
+  }
+  .article-content {
+    margin-bottom: 3rem;
+  }
+  .article-back {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border-light);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+  }
+</style>
