@@ -1,0 +1,63 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import TagBadge from './TagBadge.astro';
+
+export interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+const { title, date, tags, description } = post.data;
+---
+
+<article class="post-card">
+  <div class="tags">
+    {tags.map(tag => <TagBadge tag={tag} />)}
+  </div>
+  <h2 class="post-title">
+    <a href={`/posts/${post.slug}`}>{title}</a>
+  </h2>
+  <p class="post-desc">{description}</p>
+  <time class="post-date" datetime={date.toISOString()}>
+    {date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
+  </time>
+</article>
+
+<style>
+  .post-card {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+  .tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+  }
+  .post-title {
+    font-size: 1.15rem;
+    margin: 0 0 0.35rem;
+  }
+  .post-title a {
+    color: var(--color-heading);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .post-title a:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .post-desc {
+    font-size: 0.85rem;
+    color: var(--color-muted-light);
+    margin: 0 0 0.75rem;
+  }
+  .post-date {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--color-subtle);
+  }
+</style>
