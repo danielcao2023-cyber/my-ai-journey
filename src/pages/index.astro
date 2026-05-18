@@ -6,10 +6,7 @@ import Hero from '../components/Hero.astro';
 import PostCard from '../components/PostCard.astro';
 import Footer from '../components/Footer.astro';
 
-const posts = await getCollection('posts', ({ data }) => {
-  return data.date <= new Date();
-});
-
+const posts = await getCollection('posts');
 posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
