@@ -13,7 +13,7 @@ const posts = await getCollection('posts', ({ data }) => {
 posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<BaseLayout title="AI 学习笔记" description="记录 AI 学习过程中的思考、实验与心得">
+<BaseLayout title="Daniel's AI Journey" description="记录 AI 学习过程中的思考、实验与心得">
   <Header />
   <Hero />
   <main class="container post-list">
