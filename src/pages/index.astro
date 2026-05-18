@@ -21,6 +21,9 @@ posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
     {posts.length === 0 && (
       <p class="empty">还没有文章，敬请期待。</p>
     )}
+    <div class="contact">
+      <p>📧 有话想说？<a href="mailto:danielcao2023@gmail.com">danielcao2023@gmail.com</a></p>
+    </div>
   </main>
   <Footer />
 </BaseLayout>
@@ -37,5 +40,16 @@ posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
     color: var(--color-muted-light);
     font-family: var(--font-sans);
     padding: 3rem 0;
+  }
+  .contact {
+    text-align: center;
+    padding: 2rem 0;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--color-muted);
+  }
+  .contact a {
+    color: #2563eb;
+    text-decoration: underline;
   }
 </style>

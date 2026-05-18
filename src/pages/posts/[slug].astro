@@ -4,7 +4,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import TagBadge from '../../components/TagBadge.astro';
-import CommentSection from '../../components/CommentSection.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
@@ -37,7 +36,6 @@ const { Content } = await render(post);
     <div class="article-content">
       <Content />
     </div>
-    <CommentSection />
     <footer class="article-back">
       <a href="/">← 返回首页</a>
     </footer>
