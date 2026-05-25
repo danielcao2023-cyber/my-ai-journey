@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM 技术栈 — 木匠工坊比喻框架 · 思维导图</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #1a1a1a; color: #e0d5c1; font-family: "Noto Serif SC", "Songti SC", serif; min-height: 100vh; }
+  .header { text-align: center; padding: 2rem 1rem 0; }
+  .header h1 { font-size: 1.8rem; color: #d4a574; margin-bottom: 0.5rem; }
+  .header p { color: #8b7355; font-size: 0.95rem; }
+  .legend { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; padding: 1rem; font-size: 0.8rem; }
+  .legend span { padding: 0.2rem 0.8rem; border-radius: 3px; }
+  .legend .cog { background: #3a2a1a; color: #d4a574; }
+  .legend .orch { background: #1a2a1a; color: #7ab87a; }
+  .legend .exec { background: #1a1a3a; color: #7a7ad4; }
+  .legend .ability { background: #2a1a2a; color: #b87ab8; }
+  .legend .quality { background: #3a1a1a; color: #d47a7a; }
+  .legend .constraint { background: #2a2a1a; color: #d4d47a; }
+  .mermaid-wrap { max-width: 1400px; margin: 0 auto; padding: 1rem; overflow-x: auto; }
+  .footer { text-align: center; padding: 1rem; color: #555; font-size: 0.75rem; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🪑 木匠工坊 — LLM 技术栈完整比喻框架</h1>
+  <p>从"做一把凳子"理解 40+ 个 LLM/AI Agent 技术概念</p>
+</div>
+<div class="legend">
+  <span class="cog">🧠 认知层</span>
+  <span class="orch">📋 编排层</span>
+  <span class="exec">🦾 执行层</span>
+  <span class="ability">🔌 能力层</span>
+  <span class="quality">✅ 质量层</span>
+  <span class="constraint">⛓ 约束层</span>
+</div>
+<div class="mermaid-wrap">
+<pre class="mermaid">
+mindmap
+  root((木匠工坊<br>LLM技术栈))
+    🧠认知层
+      LLM 大脑
+      System Prompt 师傅规矩
+      User Prompt 顾客订单
+      Skill Prompt 工序卡
+      Plan 图纸
+      Reasoning 思考过程
+      Temperature 胆量
+      Hallucination 闭眼瞎刨
+      In-context Learning 当场学会
+    📋编排层
+      Skill 工序流程
+        备料→画线→开榫→组装→打磨
+      Workflow 生产线
+        接单→选料→加工→质检→交货
+    🦾执行层
+      Claude Code 肢体
+      Codex 肢体
+      Hermes 肢体
+      Agent 学徒
+        Explore Agent 跑腿
+        Plan Agent 画线
+        Sub-agent 力工
+        Orchestrator 工头
+    🧬协调层
+      MCP 神经系统
+        API 标准件接口
+      Context 工作台上的东西
+    🔌能力层
+      Tools 尺子刨子
+        Bash 手
+        Read/Write 眼和笔
+        WebSearch 翻资料
+      Plugin 外挂模块
+      Tool Use 选工具的意识
+    ⛓约束层
+      Context Window 工作台面积
+      Token Budget 工钱预算
+      Rate Limit 接单产能
+      Caching 模板模具
+      Compaction 收拾台面
+    ✅质量层
+      Guardrails 安全护栏
+      Structured Output 公差要求
+      Verification 拿尺量
+    📚学习层
+      Memory 肌肉记忆
+      Fine-tuning 师承流派
+      RAG 翻木工手册
+      Embeddings 嗅觉分类
+    🏗环境层
+      Sandbox 试做间
+      Worktree 分工作台
+      Hooks 条件反射
+      Git 工序本
+    ⚡运行层
+      Streaming 边刨边看
+      Batch 流水线批处理
+      Latency 反应速度
+      Concurrency 并行学徒
+    📊观测层
+      Observability 工坊监控
+      Retry/Fallback 刨坏重来
+      Idempotency 一刀是一刀
+      Error Handling 废料分类
+    🎨模态层
+      Multi-modal 眼耳手并用
+      Input Token 来料
+      Output Token 成品
+      Thinking Token 思绪
+</pre>
+</div>
+<div class="footer">
+  比喻框架 · 2026-05-25 · 基于 Claude Code / Anthropic API 生态
+</div>
+<script>
+mermaid.initialize({
+  startOnLoad: true,
+  theme: 'dark',
+  themeVariables: {
+    fontFamily: '"Noto Serif SC", "Songti SC", serif',
+    primaryColor: '#3a2a1a',
+    primaryBorderColor: '#d4a574',
+    primaryTextColor: '#d4a574',
+    secondaryColor: '#1a2a1a',
+    secondaryBorderColor: '#7ab87a',
+    secondaryTextColor: '#7ab87a',
+    tertiaryColor: '#1a1a2a',
+    tertiaryBorderColor: '#7a7ad4',
+    tertiaryTextColor: '#7a7ad4',
+    lineColor: '#8b7355',
+    labelBoxBorderColor: '#8b7355',
+    labelBoxColor: 'transparent',
+  },
+  mindmap: { padding: 20, maxNodeWidth: 200 }
+});
+</script>
+</body>
+</html>
